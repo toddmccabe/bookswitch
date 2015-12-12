@@ -15,4 +15,7 @@ var bookSwitchApp = angular.module('bookSwitchApp', [
   'ngResource',
   'ngSanitize',
   'ngTouch'
-]);
+])
+.constant('appConfig', {
+  'cookieExpirationInDays': 14
+});

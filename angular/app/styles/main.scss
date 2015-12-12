@@ -1,19 +1,23 @@
+@import "variables";
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "font-awesome/scss/font-awesome.scss";
 // endbower
+
+@import "header";
 
 body {
   background-color: #eff6e0;
 }
 
-header {
-  padding-top: 40px;
-  @include clearfix();
-}
-
 main {
-  padding: 20px;
+  padding: 40px 30px;
   background-color: #d8dece;
   border-radius: 10px;
+}
+
+.alert {
+  font-weight: bold;
 }
