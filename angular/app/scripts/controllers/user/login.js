@@ -1,10 +1,11 @@
-bookSwitchApp.controller('UserLoginController', function($scope, $cookies, $state, appConfig, Session) {
+bookSwitchApp.controller('UserLoginController', function($scope, $cookies, $state, $stateParams, appConfig, Session) {
   var session = new Session();
 
   $scope.usernameEmail = '';
   $scope.password = '';
   $scope.rememberMe = false;
   $scope.loginFailed = false;
+  $scope.confirmed = $stateParams.confirmed || false;
 
   $scope.login = function() {
     session.usernameEmail = $scope.usernameEmail;

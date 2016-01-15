@@ -21,3 +21,15 @@ main {
 .alert {
   font-weight: bold;
 }
+
+label {
+  cursor: pointer;
+}
+
+.capitalize {
+  display: inline-block;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}

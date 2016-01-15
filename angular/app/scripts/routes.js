@@ -24,8 +24,18 @@ bookSwitchApp.config(function($stateProvider, $urlRouterProvider) {
       parent: 'application',
       templateUrl: 'views/layout/yield.html'
     })
+    .state('user.new', {
+      url: '/user/new',
+      controller: 'UserNewController',
+      templateUrl: 'views/user/new.html'
+    })
+    .state('user.confirm', {
+      url: '/user/confirm/:token',
+      controller: 'UserConfirmController',
+      templateUrl: 'views/user/confirm.html'
+    })
     .state('user.login', {
-      url: '/user/login',
+      url: '/user/login?confirmed',
       controller: 'UserLoginController',
       templateUrl: 'views/user/login.html'
     })
