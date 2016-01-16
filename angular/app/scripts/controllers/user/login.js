@@ -5,7 +5,7 @@ bookSwitchApp.controller('UserLoginController', function($scope, $cookies, $stat
   $scope.password = '';
   $scope.rememberMe = false;
   $scope.loginFailed = false;
-  $scope.confirmed = $stateParams.confirmed || false;
+  $scope.confirmed = !!$stateParams.confirmed;
 
   $scope.login = function() {
     session.usernameEmail = $scope.usernameEmail;
