@@ -1,4 +1,4 @@
-bookSwitchApp.controller('UserLoginController', function($scope, $cookies, $state, $stateParams, appConfig, Session) {
+bookSwitchApp.controller('UserLoginController', function($scope, $state, $stateParams, Session, SiteData) {
   var session = new Session();
 
   $scope.usernameEmail = '';
@@ -10,16 +10,15 @@ bookSwitchApp.controller('UserLoginController', function($scope, $cookies, $stat
   $scope.login = function() {
     session.usernameEmail = $scope.usernameEmail;
     session.password = $scope.password;
-    var cookiesOptions = {};
 
     session.$save({
     }, function(response) {
       if($scope.rememberMe) {
-        cookiesOptions.expires = new Date((new Date()).getTime() + appConfig.cookieExpirationInDays * 24 * 60 * 60 * 1000);
+        SiteData.set('saveToCookie', true);
       }
 
-      $cookies.put('token', response.token, cookiesOptions);
-      $cookies.put('username', response.username, cookiesOptions);
+      SiteData.set('token', response.token);
+      SiteData.set('username', response.username);
 
       $state.go('user.show', {
         id: response.username

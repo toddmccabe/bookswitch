@@ -21,7 +21,29 @@ class UserController < ApplicationController
   end
 
   def show
-    render json: User.find_by_username(params[:id]).as_json(:only => [:username])
+    user = User.find_by_username(params[:id])
+
+    if user.token === params[:token]
+      render json: user.as_json(:only => [:username, :email])
+    else
+      render json: user.as_json(:only => [:username])
+    end
+  end
+
+  def update
+    user = User.find_by_username_and_token(params[:id], params[:token])
+
+    if user
+      user.attributes = private_params
+
+      if user.save
+        head 200
+      else
+        render json: {errors: user.errors}, status: 418
+      end
+    else
+      head 401
+    end
   end
 
   private

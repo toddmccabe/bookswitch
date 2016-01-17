@@ -1,4 +1,3 @@
-bookSwitchApp.controller('UserLogoutController', function($cookies) {
-  $cookies.remove('token');
-  $cookies.remove('username');
+bookSwitchApp.controller('UserLogoutController', function(SiteData) {
+  SiteData.removeAll();
 });

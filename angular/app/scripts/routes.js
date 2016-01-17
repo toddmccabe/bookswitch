@@ -45,8 +45,13 @@ bookSwitchApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/user/logout.html'
     })
     .state('user.show', {
-      url: '/user/:id',
+      url: '/user/:id?updated',
       controller: 'UserShowController',
       templateUrl: 'views/user/show.html'
+    })
+    .state('user.update', {
+      url: '/user/update/:id',
+      controller: 'UserUpdateController',
+      templateUrl: 'views/user/update.html'
     });
 });

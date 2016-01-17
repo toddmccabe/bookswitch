@@ -1,8 +1,8 @@
-bookSwitchApp.controller('ApplicationController', function($scope, $cookies) {
+bookSwitchApp.controller('ApplicationController', function($scope, SiteData) {
   $scope.$watch(function() {
-    return $cookies.get('username');
+    return SiteData.get('username');
   },
   function(value) {
-    $scope.user = value;
-  })
+    $scope.username = value;
+  });
 });

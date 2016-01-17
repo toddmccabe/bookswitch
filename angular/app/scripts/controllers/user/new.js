@@ -1,4 +1,4 @@
-bookSwitchApp.controller('UserNewController', function($scope, User) {
+bookSwitchApp.controller('UserNewController', function($scope, User, Error) {
   var user = new User();
 
   $scope.email = '';
@@ -15,13 +15,7 @@ bookSwitchApp.controller('UserNewController', function($scope, User) {
     }, function() {
       $scope.created = true;
     }, function(response) {
-      $scope.errors = [];
-
-      angular.forEach(response.data.errors, function(errorsArray, key) {
-        angular.forEach(errorsArray, function(error) {
-          this.push(key + ' ' + error);
-        }, $scope.errors);
-      });
+      $scope.errors = Error.parse(response.data.errors);
     });
   }
 });

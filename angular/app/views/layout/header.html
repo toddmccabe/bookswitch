@@ -14,7 +14,7 @@
   </div>
 
   <div class="header-buttons pull-right">
-    <div ng-hide="user">
+    <div ng-hide="username">
       <a ui-sref="user.login" class="btn btn-primary">
         Log in
       </a>
@@ -22,11 +22,11 @@
         Sign up
       </a>
     </div>
-    <div ng-show="user">
-      <a ui-sref="user.show({id: user})" class="btn btn-primary">
+    <div ng-show="username">
+      <a ui-sref="user.show({id: username})" class="btn btn-primary">
         <i class="fa fa-rocket"></i>&nbsp;
         <strong>
-          {{user}}
+          {{username}}
         </strong>
       </a>
       <a ui-sref="user.logout" class="btn btn-success">

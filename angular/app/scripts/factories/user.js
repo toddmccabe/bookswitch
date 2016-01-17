@@ -3,6 +3,9 @@ bookSwitchApp.factory('User', function($resource) {
     'confirm': {
       method: 'POST',
       url: '/api/user/confirm'
+    },
+    'update': {
+      method: 'PUT'
     }
   });
 });

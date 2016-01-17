@@ -1,1 +1,13 @@
-User details: {{user}}
+<div class="alert alert-success" ng-show="updated">
+  Your account has been updated.
+</div>
+
+<h3>
+  {{user.username}}
+</h3>
+
+<div ng-show="isUser">
+  <a ui-sref="user.update({id: user.username})" class="btn btn-primary">
+    Edit
+  </a>
+</div>
