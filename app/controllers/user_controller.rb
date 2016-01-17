@@ -14,7 +14,6 @@ class UserController < ApplicationController
 
     if user
       user.confirmed = true
-      user.active = true
       user.save
     else
       head 401
