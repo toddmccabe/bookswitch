@@ -1,4 +1,4 @@
-bookSwitchApp.controller('UserLoginController', function($scope, $state, $stateParams, Session, SiteData) {
+bookSwitchApp.controller('UserLoginController', function($scope, $state, $stateParams, Session, SiteData, Error) {
   var session = new Session();
 
   $scope.usernameEmail = '';
@@ -23,8 +23,8 @@ bookSwitchApp.controller('UserLoginController', function($scope, $state, $stateP
       $state.go('user.show', {
         id: response.username
       })
-    }, function() {
-      $scope.loginFailed = true;
+    }, function(response) {
+      $scope.errors = Error.parse(response.data.error);
     });
   }
 });

@@ -4,9 +4,19 @@ class SessionController < ApplicationController
     user ||= User.find_by_email_and_password(params[:usernameEmail], params[:password])
 
     if user
-      render json: user.as_json(:only => [:username, :token])
+      # reactivate account on login
+      if !user.active
+        user.active = true
+        user.save
+      end
+
+      if user.confirmed
+        render json: user.as_json(:only => [:username, :token])
+      else
+        render json: {error: "Your account has not been confirmed. Please check your email."}, status: 401
+      end
     else
-      head 401
+      render json: {error: "Login failed. Please check your credentials."}, status: 401
     end
   end
 end

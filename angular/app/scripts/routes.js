@@ -40,7 +40,7 @@ bookSwitchApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/user/login.html'
     })
     .state('user.logout', {
-      url: '/user/logout',
+      url: '/user/logout?deactivated',
       controller: 'UserLogoutController',
       templateUrl: 'views/user/logout.html'
     })
@@ -53,5 +53,10 @@ bookSwitchApp.config(function($stateProvider, $urlRouterProvider) {
       url: '/user/update/:id',
       controller: 'UserUpdateController',
       templateUrl: 'views/user/update.html'
+    })
+    .state('user.deactivate', {
+      url: '/user/deactivate/:id',
+      controller: 'UserDeactivateController',
+      templateUrl: 'views/user/deactivate.html'
     });
 });

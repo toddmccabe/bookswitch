@@ -3,13 +3,21 @@ bookSwitchApp.factory('Error', function() {
     parse: function(errors) {
       var parsedErrors = [];
 
-      angular.forEach(errors, function(errorsArray, key) {
-        angular.forEach(errorsArray, function(error) {
-          key = key.replace('_', ' ');
+      // if errors is a string
+      if(typeof errors == "string") {
+        parsedErrors.push(errors);
 
-          this.push(key + ' ' + error);
-        }, parsedErrors);
-      });
+      // if errors is an array
+      } else {
+        angular.forEach(errors, function(errorsArray, key) {
+          angular.forEach(errorsArray, function(error) {
+            key = key.replace('_', ' ');
+
+            this.push(key + ' ' + error);
+          }, parsedErrors);
+        });
+      }
+
 
       return parsedErrors;
     }

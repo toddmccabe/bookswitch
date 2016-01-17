@@ -6,7 +6,10 @@ class User
   key :username,  String,   :required => true, :unique => true
   key :password,  String,   :required => true
   key :token,     String,   :unique => true
-  key :active,    Boolean,  :default => false
+  # active determines if the user account is deactivated
+  key :active,    Boolean,  :default => true
+  # confirmed determines if the user has clicked the link sent to them after signing up
+  key :confirmed, Boolean,  :default => false
 
   validates :email, :presence => true, :email => true
 

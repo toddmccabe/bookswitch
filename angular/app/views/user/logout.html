@@ -1,3 +1,7 @@
-<div class="alert alert-success">
+<div class="alert alert-success" ng-hide="deactivated">
   You have been logged out. Thanks for using BookSwitch.org!
+</div>
+
+<div class="alert alert-success" ng-show="deactivated">
+  Your account has been deactivated.
 </div>

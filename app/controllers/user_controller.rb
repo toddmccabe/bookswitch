@@ -13,6 +13,7 @@ class UserController < ApplicationController
     user = User.find_by_token(params[:token])
 
     if user
+      user.confirmed = true
       user.active = true
       user.save
     else
