@@ -1,17 +1,9 @@
 bookSwitchApp.controller('UserNewController', function($scope, User, Error) {
-  var user = new User();
-
-  $scope.email = '';
-  $scope.username = '';
-  $scope.password = '';
+  $scope.user = new User();
   $scope.created = false;
 
   $scope.create = function() {
-    user.email = $scope.email;
-    user.username = $scope.username;
-    user.password = $scope.password;
-
-    user.$save({
+    $scope.user.$save({
     }, function() {
       $scope.created = true;
     }, function(response) {
