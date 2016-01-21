@@ -1,6 +1,6 @@
 class UserController < ApplicationController
   def create
-    user = User.new(private_params)
+    user = User.new(private_params(User))
 
     if user.save
       UserMailer.confirmation(user).deliver_now
@@ -44,11 +44,5 @@ class UserController < ApplicationController
     else
       head 401
     end
-  end
-
-  private
-
-  def private_params
-    params.permit(User.column_names)
   end
 end

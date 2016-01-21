@@ -1,0 +1,46 @@
+<error errors="errors"></error>
+
+<form class="form-horizontal" autocomplete="off">
+  <div class="form-group">
+    <label for="title" class="control-label col-md-3">
+      Title
+    </label>
+    <div class="col-md-4">
+      <input type="text" class="form-control" id="title" ng-model="book.title" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="author" class="control-label col-md-3">
+      Author
+    </label>
+    <div class="col-md-4">
+      <input type="text" class="form-control" id="author" ng-model="book.author" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="isbn" class="control-label col-md-3">
+      ISBN
+    </label>
+    <div class="col-md-4">
+      <input type="text" class="form-control" id="isbn" ng-model="book.isbn" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="price" class="control-label col-md-3">
+      Price
+    </label>
+    <div class="col-md-4">
+      <div class="input-group">
+        <div class="input-group-addon">$</div>
+        <input type="text" class="form-control" id="price" ng-model="book.price" />
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-offset-3 col-md-4">
+      <button type="submit" class="btn btn-primary" ng-click="create()">
+        Add book
+      </button>
+    </div>
+  </div>
+</form>

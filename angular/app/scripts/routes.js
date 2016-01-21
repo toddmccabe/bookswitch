@@ -15,9 +15,14 @@ bookSwitchApp.config(function($stateProvider, $urlRouterProvider) {
       parent: 'application',
       templateUrl: 'views/layout/yield.html'
     })
+    .state('book.new', {
+      url: '/book/new',
+      controller: 'BookNewController',
+      templateUrl: 'views/book/new.html'
+    })
     .state('book.show', {
-      url: '/book/:id',
-      controller: 'BookController',
+      url: '/book/:id?added',
+      controller: 'BookShowController',
       templateUrl: 'views/book/show.html'
     })
     .state('user', {
