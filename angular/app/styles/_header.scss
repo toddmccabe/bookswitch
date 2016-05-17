@@ -1,5 +1,5 @@
 header {
-  padding-top: 40px;
+  padding: 40px 0 10px;
   @include clearfix();
 
   .logo {
@@ -13,7 +13,7 @@ header {
 
   .header-search,
   .header-buttons {
-    margin-top: 12px;
+    margin-top: 20px;
   }
 
   .form-inline {

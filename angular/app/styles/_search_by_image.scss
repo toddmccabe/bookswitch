@@ -1,0 +1,19 @@
+[search-by-image],
+.search-by-image {
+  width: 30px;
+}
+
+.search-by-image {
+  .search-by-image-preview {
+    position: relative;
+    height: 0;
+
+    video,
+    canvas {
+      position: absolute;
+      right: 0;
+      z-index: 10;
+      height: 200px;
+    }
+  }
+}
