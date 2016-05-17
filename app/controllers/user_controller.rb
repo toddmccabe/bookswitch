@@ -9,6 +9,7 @@ class UserController < ApplicationController
     end
   end
 
+  # todo: add username lookup to increase bruteforce difficulty
   def confirm
     user = User.find_by_token(params[:token])
 
@@ -34,7 +35,7 @@ class UserController < ApplicationController
     user = User.find_by_username_and_token(params[:id], params[:token])
 
     if user
-      user.attributes = private_params
+      user.attributes = private_params(User)
 
       if user.save
         head 200

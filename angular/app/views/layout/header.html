@@ -14,9 +14,6 @@
   </div>
 
   <div class="header-buttons pull-right">
-    <a ui-sref="book.new" class="btn btn-primary">
-      Add a book
-    </a>
 
     <span ng-hide="username">
       <a ui-sref="user.login" class="btn btn-primary">
@@ -27,6 +24,9 @@
       </a>
     </span>
     <span ng-show="username">
+      <a ui-sref="book.new" class="btn btn-primary">
+        Add a book
+      </a>
       <a ui-sref="user.show({id: username})" class="btn btn-primary">
         <i class="fa fa-rocket"></i>&nbsp;
         <strong>

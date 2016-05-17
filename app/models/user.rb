@@ -6,7 +6,7 @@ class User
   key :username,  String,   :required => true, :unique => true
   key :password,  String,   :required => true
   key :token,     String,   :unique => true
-  # active determines if the user account is deactivated
+  # active used for indefinitely closing an account
   key :active,    Boolean,  :default => true
   # confirmed determines if the user has clicked the link sent to them after signing up
   key :confirmed, Boolean,  :default => false
@@ -16,8 +16,6 @@ class User
   many :books
 
   before_create :generate_token!
-
-  protected
 
   def generate_token!
     begin
