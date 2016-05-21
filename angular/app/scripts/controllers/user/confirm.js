@@ -9,7 +9,7 @@ bookSwitchApp.controller('UserConfirmController', function($scope, $state, $stat
   }, function() {
     $state.go('user.login', {
       confirmed: true
-    })
+    });
   }, function() {
     $scope.confirmed = false;
   });

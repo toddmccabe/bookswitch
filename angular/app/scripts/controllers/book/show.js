@@ -4,5 +4,5 @@ bookSwitchApp.controller('BookShowController', function($scope, $stateParams, Bo
   Book.get({id: $stateParams.id}, function(book) {
     $scope.book = book;
     $scope.isOwner = SiteData.get('username') == $scope.book.user_id;
-  })
+  });
 });

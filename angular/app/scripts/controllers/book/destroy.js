@@ -9,5 +9,5 @@ bookSwitchApp.controller('BookDestroyController', function($scope, $state, $stat
     }, function() {
       $scope.removed = true;
     });
-  }
+  };
 });

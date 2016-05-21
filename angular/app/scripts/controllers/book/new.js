@@ -39,5 +39,5 @@ bookSwitchApp.controller('BookNewController', function($scope, $state, Book, ISB
     }, function(response) {
       $scope.errors = response.data.errors;
     });
-  }
+  };
 });
