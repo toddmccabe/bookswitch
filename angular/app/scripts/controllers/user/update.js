@@ -22,5 +22,5 @@ bookSwitchApp.controller('UserUpdateController', function($scope, $state, $state
     }, function(response) {
       $scope.errors = Error.parse(response.data.errors);
     });
-  }
+  };
 });

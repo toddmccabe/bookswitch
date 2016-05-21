@@ -30,5 +30,8 @@ module BookSwitch
     config.generators do |g|
       g.orm :mongo_mapper
     end
+
+    # number of results to return
+    config.x.results_per_page = 10
   end
 end

@@ -1,8 +1,3 @@
-[search-by-image],
-.search-by-image {
-  width: 30px;
-}
-
 .search-by-image {
   .search-by-image-preview {
     position: relative;
@@ -10,10 +5,11 @@
 
     video,
     canvas {
-      position: absolute;
-      right: 0;
-      z-index: 10;
       height: 200px;
+      position: absolute;
+      right: -2px;
+      top: 4px;
+      z-index: 10;
     }
   }
 }

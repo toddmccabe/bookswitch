@@ -1,16 +1,17 @@
-<header>
+<header ng-controller="LayoutHeaderController">
   <a ui-sref="home" class="logo pull-left">
     <img src="/images/logo.png" />
   </a>
 
-  <div class="header-search pull-left hidden">
-    <form class="form-inline">
-      <input class="form-control" placeholder="Search by title, author, or ISBN" />
+  <div class="header-search pull-left">
+    <form ng-submit="search()">
+      <div class="input-group">
+        <input ng-model="searchQuery" ng-focus="search()" class="form-control" placeholder="Search by title, author, or ISBN" />
+        <span class="input-group-addon">
+          <div search-by-image target="searchQuery"></div>
+        </span>
+      </div>
     </form>
-
-    <a href="" class="search-by-image">
-      <i class="fa fa-camera fa-2x"></i>
-    </a>
   </div>
 
   <div class="header-buttons pull-right">

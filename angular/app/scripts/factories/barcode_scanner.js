@@ -8,7 +8,6 @@ bookSwitchApp.factory('BarcodeScanner', function($q, appConfig) {
       var deferred = $q.defer(),
           _this = this;
 
-      // save preview to variable
       preview = config.scanPreview;
 
       // initialize and start Quagga
@@ -24,7 +23,8 @@ bookSwitchApp.factory('BarcodeScanner', function($q, appConfig) {
         locate: appConfig.quagga.locate
       }, function(error) {
         if(error) {
-          alert(error);
+          alert('Unable to access your camera. Please enter the ISBN manually.');
+          console.log(error);
           return;
         }
 

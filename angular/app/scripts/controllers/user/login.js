@@ -22,9 +22,9 @@ bookSwitchApp.controller('UserLoginController', function($scope, $state, $stateP
 
       $state.go('user.show', {
         id: response.username
-      })
+      });
     }, function(response) {
       $scope.errors = Error.parse(response.data.error);
     });
-  }
+  };
 });

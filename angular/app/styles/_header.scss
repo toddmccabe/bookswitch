@@ -16,17 +16,12 @@ header {
     margin-top: 20px;
   }
 
-  .form-inline {
-    display: inline-block;
-    width: 250px;
-
-    .form-control {
-      width: 100%;
-    }
+  form {
+    width: 300px;
   }
 
-  .search-by-image {
-    margin-left: 8px;
+  [search-by-image] {
+    float: right;
     vertical-align: middle;
     display: inline-block;
   }

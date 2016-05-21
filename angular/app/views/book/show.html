@@ -5,4 +5,35 @@
   </a>
 </div>
 
-Book Details: {{book}}
+<div class="row">
+  <div class="col-md-3 text-right">
+    Title
+  </div>
+  <div class="col-md-9">
+    {{book.title}}
+  </div>
+  <div class="col-md-3 text-right">
+    Author
+  </div>
+  <div class="col-md-9">
+    {{book.author}}
+  </div>
+  <div class="col-md-3 text-right">
+    ISBN
+  </div>
+  <div class="col-md-9">
+    {{book.isbn}}
+  </div>
+  <div class="col-md-3 text-right">
+    Price
+  </div>
+  <div class="col-md-9">
+    {{book.price | currency}}
+  </div>
+  <div class="col-md-3 text-right">
+    User
+  </div>
+  <div class="col-md-9">
+    {{book.user_id}}
+  </div>
+</div>

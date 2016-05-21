@@ -1,4 +1,4 @@
-bookSwitchApp.controller('BookShowController', function($scope, Book, $stateParams) {
+bookSwitchApp.controller('BookShowController', function($scope, $stateParams, Book) {
   $scope.added = !!$stateParams.added;
 
   Book.get({id: $stateParams.id}, function(book) {

@@ -15,5 +15,5 @@ bookSwitchApp.controller('UserDeactivateController', function($scope, $state, $s
         deactivated: true
       });
     });
-  }
+  };
 });

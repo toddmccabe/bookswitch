@@ -20,6 +20,11 @@ bookSwitchApp.config(function($stateProvider, $urlRouterProvider) {
       controller: 'BookNewController',
       templateUrl: 'views/book/new.html'
     })
+    .state('book.search', {
+      url: '/book/search?query&page&sort',
+      controller: 'BookSearchController',
+      templateUrl: 'views/book/search.html'
+    })
     .state('book.show', {
       url: '/book/:id?added',
       controller: 'BookShowController',

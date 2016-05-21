@@ -1,0 +1,63 @@
+<div class="book-list">
+  <div class="book-list-header row">
+    <div class="col-sm-5">
+      <a href="" ng-click="sort = 'title'">
+        Title
+      </a>
+    </div>
+    <div class="col-sm-4">
+      <a href="" ng-click="sort = 'author'">
+        Author
+      </a>
+    </div>
+    <div class="col-sm-2">
+      <a href="" ng-click="sort = 'isbn'">
+        ISBN
+      </a>
+    </div>
+    <div class="col-sm-1">
+      <a href="" ng-click="sort = 'price'">
+        Price
+      </a>
+    </div>
+  </div>
+
+  <div class="book-list-item row" ng-repeat="book in books">
+    <a ui-sref="book.show({id: book.id})">
+      <div class="col-sm-5">
+        {{book.title}}
+      </div>
+      <div class="col-sm-4">
+        {{book.author}}
+      </div>
+      <div class="col-sm-2">
+        {{book.isbn}}
+      </div>
+      <div class="col-sm-1">
+        {{book.price | currency}}
+      </div>
+    </a>
+  </div>
+
+  <div class="text-center" ng-show="totalCount > books.length">
+    <ul class="pagination">
+      <li ng-class="{'disabled': page == 1}">
+        <a href="" ng-click="setPage(page - 1)">
+          Previous
+        </a>
+      </li>
+
+      <li ng-repeat="i in totalPages.toArray() track by $index" ng-class="{'active': page == $index + 1}">
+        <a href="" ng-click="setPage($index + 1)">
+          {{$index + 1}}
+        </a>
+      </li>
+
+      <li ng-class="{'disabled': page == totalPages}">
+        <a href="" class="book-list-pagination-next" ng-click="setPage($index + 2)">
+          Next
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

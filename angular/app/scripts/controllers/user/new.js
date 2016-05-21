@@ -9,5 +9,5 @@ bookSwitchApp.controller('UserNewController', function($scope, User, Error) {
     }, function(response) {
       $scope.errors = Error.parse(response.data.errors);
     });
-  }
+  };
 });

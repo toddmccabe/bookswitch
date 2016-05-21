@@ -40,7 +40,7 @@ bookSwitchApp.factory('SiteData', function($cookies, appConfig) {
       if(angular.isDefined(cookieValue)) {
         set(value, cookieValue);
       }
-    })
+    });
   }
 
   // Read cookies and save to data object

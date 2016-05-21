@@ -4,6 +4,7 @@ class User
 
   key :email,     String,   :unique => true
   key :username,  String,   :required => true, :unique => true
+  # todo: encrypt all passwords
   key :password,  String,   :required => true
   key :token,     String,   :unique => true
   # active used for indefinitely closing an account

@@ -1,0 +1,13 @@
+.book-list {
+  .book-list-header {
+    font-weight: bold;
+  }
+
+  .book-list-item:nth-child(odd) {
+    background-color: #d3d9c9;
+  }
+
+  .book-list-pagination-next {
+    min-width: 90px;
+  }
+}

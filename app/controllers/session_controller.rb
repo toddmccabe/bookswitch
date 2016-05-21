@@ -1,7 +1,12 @@
 class SessionController < ApplicationController
   def create
-    user = User.find_by_username_and_password(params[:usernameEmail], params[:password])
-    user ||= User.find_by_email_and_password(params[:usernameEmail], params[:password])
+    # attempt to log in with username and password
+    user = User.where(:username => { :$regex => /^#{params[:usernameEmail]}$/i },
+                      :password => params[:password]).first
+
+    # if that failed, attempt to log in with email and password
+    user ||= User.where(:email => { :$regex => /^#{params[:usernameEmail]}$/i },
+                      :password => params[:password]).first
 
     if user
       # reactivate account on login
