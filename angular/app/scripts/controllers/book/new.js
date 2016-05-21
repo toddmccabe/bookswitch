@@ -19,6 +19,9 @@ bookSwitchApp.controller('BookNewController', function($scope, $state, Book, ISB
         // update $scope.book
         $scope.book.title = response.volumeInfo.title;
         $scope.book.author = response.volumeInfo.authors.join(', ');
+
+        // inform anyone interested that the ISBN lookup was successful
+        $scope.$broadcast('isbnLookupSuccess');
       });
     }
   });

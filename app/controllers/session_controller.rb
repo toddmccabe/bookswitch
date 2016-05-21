@@ -1,4 +1,13 @@
 class SessionController < ApplicationController
+  # validate a session
+  def show
+    if User.find_by_username_and_token(params[:username], params[:id])
+      head 200
+    else
+      head 401
+    end
+  end
+
   def create
     # attempt to log in with username and password
     user = User.where(:username => { :$regex => /^#{params[:usernameEmail]}$/i },

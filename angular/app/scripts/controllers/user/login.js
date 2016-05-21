@@ -1,15 +1,15 @@
 bookSwitchApp.controller('UserLoginController', function($scope, $state, $stateParams, Session, SiteData) {
   var session = new Session();
 
-  $scope.usernameEmail = '';
-  $scope.password = '';
   $scope.rememberMe = false;
   $scope.loginFailed = false;
   $scope.confirmed = $stateParams.confirmed;
 
   $scope.login = function() {
-    session.usernameEmail = $scope.usernameEmail;
-    session.password = $scope.password;
+    // get actual values from input elements
+    // two-way data binding is broken by autocomplete
+    session.usernameEmail = $('#usernameEmail').val();
+    session.password = $('#password').val();
 
     session.$save({
     }, function(response) {
