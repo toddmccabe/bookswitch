@@ -19,7 +19,7 @@
   </div>
 
   <br />
-  <h3 ng-hide="query">Books</h3>
+  <h3>{{user.username | possessive}} books</h3>
 
   <book-list books="books" total-count="totalCount" page="page" sort="sort" direction="direction"></book-list>
 </div>

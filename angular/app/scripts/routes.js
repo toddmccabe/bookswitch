@@ -30,6 +30,11 @@ bookSwitchApp.config(function($stateProvider, $urlRouterProvider) {
       controller: 'BookShowController',
       templateUrl: 'views/book/show.html'
     })
+    .state('book.destroy', {
+      url: '/book/destroy/:id?removed',
+      controller: 'BookDestroyController',
+      templateUrl: 'views/book/destroy.html'
+    })
     .state('user', {
       parent: 'application',
       templateUrl: 'views/layout/yield.html'

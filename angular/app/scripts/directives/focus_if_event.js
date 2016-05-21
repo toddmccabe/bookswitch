@@ -6,7 +6,7 @@ bookSwitchApp.directive('focusIfEvent', function() {
     link: function($scope, $element) {
       $scope.$on($scope.event, function() {
         $element.focus();
-      })
+      });
     }
   }
 });

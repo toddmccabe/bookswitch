@@ -1,0 +1,13 @@
+<div class="alert alert-success" ng-show="removed">
+  That book has been removed.
+</div>
+
+<div ng-hide="removed">
+  <div class="alert alert-success">
+    Are you sure you want to remove this book?
+  </div>
+
+  <a ng-click="destroy()" class="btn btn-primary">
+    Remove
+  </a>
+</div>

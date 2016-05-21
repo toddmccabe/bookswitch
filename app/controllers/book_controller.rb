@@ -62,4 +62,17 @@ class BookController < ApplicationController
 
     render json: book
   end
+
+  def destroy
+    book = Book.find_by_id(params[:id])
+    user = User.find_by_username_and_token(params[:username], params[:token])
+
+    if book && user && book.user == user
+      book.delete
+      
+      head 200
+    else
+      head 401
+    end
+  end
 end
