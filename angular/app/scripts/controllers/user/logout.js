@@ -1,8 +1,10 @@
 bookSwitchApp.controller('UserLogoutController', function($scope, $stateParams, Session, SiteData) {
-  $scope.deactivated = !!$stateParams.deactivated;
-
+  $scope.deactivated = $stateParams.deactivated;
+  var token = SiteData.get('token');
   var session = new Session();
 
-  session.$remove({id: SiteData.get('token')});
+  if(token)
+    session.$remove({id: token});
+
   SiteData.removeAll();
 });

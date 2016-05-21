@@ -21,7 +21,7 @@ bookSwitchApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/book/new.html'
     })
     .state('book.search', {
-      url: '/book/search?query&page&sort',
+      url: '/book/search?query&page&sort&direction',
       controller: 'BookSearchController',
       templateUrl: 'views/book/search.html'
     })
@@ -55,7 +55,7 @@ bookSwitchApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/user/logout.html'
     })
     .state('user.show', {
-      url: '/user/:id?updated',
+      url: '/user/:id?updated&page&sort&direction',
       controller: 'UserShowController',
       templateUrl: 'views/user/show.html'
     })

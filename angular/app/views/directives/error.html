@@ -1,5 +1,5 @@
-<div class="alert alert-danger" ng-show="errors.length">
-  <div ng-repeat="(key, value) in errors">
+<div class="alert alert-danger" ng-show="parsedErrors.length">
+  <div ng-repeat="(key, value) in parsedErrors">
     <i class="fa fa-remove"></i>
     <span class="capitalize">
       {{value}}

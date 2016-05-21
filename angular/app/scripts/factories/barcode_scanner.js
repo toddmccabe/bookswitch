@@ -3,12 +3,14 @@ bookSwitchApp.factory('BarcodeScanner', function($q, appConfig) {
 
   return {
     isRunning: false,
+    scopeID: null,
 
     scan: function(config) {
       var deferred = $q.defer(),
           _this = this;
 
       preview = config.scanPreview;
+      _this.scopeID = config.scopeID;
 
       // initialize and start Quagga
       Quagga.init({

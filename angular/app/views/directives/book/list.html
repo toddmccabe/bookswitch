@@ -1,24 +1,16 @@
 <div class="book-list">
   <div class="book-list-header row">
     <div class="col-sm-5">
-      <a href="" ng-click="sort = 'title'">
-        Title
-      </a>
+      <sort-link label="Title" property="title" sort="sort" page="page" direction="direction"></sort-link>
     </div>
     <div class="col-sm-4">
-      <a href="" ng-click="sort = 'author'">
-        Author
-      </a>
+      <sort-link label="Author" property="author" sort="sort" page="page" direction="direction"></sort-link>
     </div>
     <div class="col-sm-2">
-      <a href="" ng-click="sort = 'isbn'">
-        ISBN
-      </a>
+      <sort-link label="ISBN" property="isbn" sort="sort" page="page" direction="direction"></sort-link>
     </div>
     <div class="col-sm-1">
-      <a href="" ng-click="sort = 'price'">
-        Price
-      </a>
+      <sort-link label="Price" property="price" sort="sort" page="page" direction="direction"></sort-link>
     </div>
   </div>
 
@@ -47,7 +39,7 @@
         </a>
       </li>
 
-      <li ng-repeat="i in totalPages.toArray() track by $index" ng-class="{'active': page == $index + 1}">
+      <li ng-repeat="i in totalPages.toArray() track by $index" ng-class="{'active': (page == $index + 1 || !page && $index == 0)}">
         <a href="" ng-click="setPage($index + 1)">
           {{$index + 1}}
         </a>

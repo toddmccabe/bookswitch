@@ -1,16 +1,22 @@
 class BookController < ApplicationController
   def index
     query = params[:query]
+    username = params[:username]
     page = params[:page] ? params[:page].to_i : 1
     sort = params[:sort]
+    direction = params[:direction] || 'asc'
 
-    # find books that match query
-    if query
-      queryRegEx = Regexp.new(Regexp.escape(query), true);
-
-      books = Book.where(:$or => [{:title => queryRegEx}, {:author => queryRegEx}, {:isbn => queryRegEx}])
+    if username && user = User.find_by_username(username)
+      books = user.books
     else
-      books = Book.where()
+      # find books that match query
+      if query
+        queryRegEx = Regexp.new(Regexp.escape(query), true);
+
+        books = Book.where(:$or => [{:title => queryRegEx}, {:author => queryRegEx}, {:isbn => queryRegEx}])
+      else
+        books = Book.where()
+      end
     end
 
     # apply page number
@@ -18,9 +24,9 @@ class BookController < ApplicationController
       books = books.offset((page - 1) * Rails.configuration.x.results_per_page)
     end
 
-    # apply sort, with title being the default
+    # apply sort and direction (asc/desc), with title being default
     # note: mongodb doesn't allow case insensitive sorting
-    books = books.sort(Book.column_names.include?(sort) ? sort : :title)
+    books = books.sort((Book.column_names.include?(sort) ? sort : :title).to_sym.instance_eval(direction))
 
     # limit to X books per page
     books = books.limit(Rails.configuration.x.results_per_page)

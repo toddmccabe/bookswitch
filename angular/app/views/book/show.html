@@ -34,6 +34,8 @@
     User
   </div>
   <div class="col-md-9">
-    {{book.user_id}}
+    <a ui-sref="user.show({id: book.user_id})">
+      {{book.user_id}}
+    </a>
   </div>
 </div>

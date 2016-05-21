@@ -1,16 +1,25 @@
+<error errors="errors"></error>
+
 <div class="alert alert-success" ng-show="updated">
   Your account has been updated.
 </div>
 
-<h3>
-  {{user.username}}
-</h3>
+<div ng-show="user">
+  <h3>
+    {{user.username}}
+  </h3>
 
-<div ng-show="isUser">
-  <a ui-sref="user.update({id: user.username})" class="btn btn-primary">
-    Edit
-  </a>
-  <a ui-sref="user.deactivate({id: user.username})" class="btn btn-success">
-    Deactivate
-  </a>
+  <div ng-show="isUser">
+    <a ui-sref="user.update({id: user.username})" class="btn btn-primary">
+      Edit
+    </a>
+    <a ui-sref="user.deactivate({id: user.username})" class="btn btn-success">
+      Deactivate
+    </a>
+  </div>
+
+  <br />
+  <h3 ng-hide="query">Books</h3>
+
+  <book-list books="books" total-count="totalCount" page="page" sort="sort" direction="direction"></book-list>
 </div>

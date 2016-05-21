@@ -1,11 +1,11 @@
-bookSwitchApp.controller('UserLoginController', function($scope, $state, $stateParams, Session, SiteData, Error) {
+bookSwitchApp.controller('UserLoginController', function($scope, $state, $stateParams, Session, SiteData) {
   var session = new Session();
 
   $scope.usernameEmail = '';
   $scope.password = '';
   $scope.rememberMe = false;
   $scope.loginFailed = false;
-  $scope.confirmed = !!$stateParams.confirmed;
+  $scope.confirmed = $stateParams.confirmed;
 
   $scope.login = function() {
     session.usernameEmail = $scope.usernameEmail;
@@ -24,7 +24,7 @@ bookSwitchApp.controller('UserLoginController', function($scope, $state, $stateP
         id: response.username
       });
     }, function(response) {
-      $scope.errors = Error.parse(response.data.error);
+      $scope.errors = response.data.error;
     });
   };
 });

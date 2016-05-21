@@ -1,4 +1,4 @@
-bookSwitchApp.controller('UserNewController', function($scope, User, Error) {
+bookSwitchApp.controller('UserNewController', function($scope, User) {
   $scope.user = new User();
   $scope.created = false;
 
@@ -7,7 +7,7 @@ bookSwitchApp.controller('UserNewController', function($scope, User, Error) {
     }, function() {
       $scope.created = true;
     }, function(response) {
-      $scope.errors = Error.parse(response.data.errors);
+      $scope.errors = response.data.errors;
     });
   };
 });

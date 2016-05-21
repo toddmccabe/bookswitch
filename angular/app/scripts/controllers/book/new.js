@@ -1,4 +1,4 @@
-bookSwitchApp.controller('BookNewController', function($scope, $state, Book, ISBNLookup, Error, SiteData) {
+bookSwitchApp.controller('BookNewController', function($scope, $state, Book, ISBNLookup, SiteData) {
   $scope.book = new Book();
 
   // if we enter an ISBN, attempt to lookup book details
@@ -34,7 +34,7 @@ bookSwitchApp.controller('BookNewController', function($scope, $state, Book, ISB
         added: true
       });
     }, function(response) {
-      $scope.errors = Error.parse(response.data.errors);
+      $scope.errors = response.data.errors;
     });
   }
 });

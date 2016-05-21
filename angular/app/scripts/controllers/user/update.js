@@ -1,4 +1,4 @@
-bookSwitchApp.controller('UserUpdateController', function($scope, $state, $stateParams, User, Error, SiteData) {
+bookSwitchApp.controller('UserUpdateController', function($scope, $state, $stateParams, User, SiteData) {
   var user = new User();
 
   user.$get({
@@ -20,7 +20,7 @@ bookSwitchApp.controller('UserUpdateController', function($scope, $state, $state
         updated: true
       });
     }, function(response) {
-      $scope.errors = Error.parse(response.data.errors);
+      $scope.errors = response.data.errors;
     });
   };
 });

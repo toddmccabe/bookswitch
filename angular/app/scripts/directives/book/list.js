@@ -4,7 +4,8 @@ bookSwitchApp.directive('bookList', function(appConfig) {
       books: '=',
       totalCount: '=',
       page: '=',
-      sort: '='
+      sort: '=',
+      direction: '='
     },
     templateUrl: 'views/directives/book/list.html',
     link: function($scope) {

@@ -6,6 +6,7 @@ bookSwitchApp.controller('UserDeactivateController', function($scope, $state, $s
   $scope.deactivate = function() {
     user.active = false;
 
+    // save active flag, then logout
     user.$update({
       id: $stateParams.id,
       token: SiteData.get('token')
