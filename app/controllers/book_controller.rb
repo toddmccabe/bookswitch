@@ -36,16 +36,6 @@ class BookController < ApplicationController
 
   def create
     book = Book.new(private_params(Book))
-
-    # capitalize the first letter of title and author
-    # these should always be capitalized but it fixes
-    # mongodb's inability to sort case-insensitive
-    [:title, :author].each do |param|
-      if !book[param].blank?
-        book[param][0] = book[param][0].capitalize
-      end
-    end
-
     book.user = User.find_by_token(params[:token])
 
     if book.save
@@ -57,10 +47,32 @@ class BookController < ApplicationController
 
   def show
     book = Book.find_by_id(params[:id])
-    # replace database identifier with actual username
-    book.user_id = book.user.username
 
-    render json: book
+    if book
+      # replace database identifier with username for user friendly urls
+      book.user_id = book.user.username
+
+      render json: book
+    else
+      render json: {errors: 'We were unable to find that book.'}, status: 404
+    end
+  end
+
+  def update
+    book = Book.find_by_id(params[:id])
+    user = User.find_by_username_and_token(params[:username], params[:token])
+
+    if book && user && book.user == user
+      book.attributes = private_params(Book)
+
+      if book.save
+        head 200
+      else
+        render json: {errors: book.errors}, status: 418
+      end
+    else
+      head 401
+    end
   end
 
   def destroy

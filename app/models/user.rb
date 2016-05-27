@@ -4,19 +4,26 @@ class User
 
   key :email,     String,   :unique => true
   key :username,  String,   :required => true, :unique => true
-  # todo: encrypt all passwords
   key :password,  String,   :required => true
   key :token,     String,   :unique => true
   # active used for indefinitely closing an account
   key :active,    Boolean,  :default => true
   # confirmed determines if the user has clicked the link sent to them after signing up
   key :confirmed, Boolean,  :default => false
+  key :salt,      String
 
   validates :email, :presence => true, :email => true
 
   many :books
 
+  attr_accessible :email, :username, :password
+
   before_create :generate_token!
+
+  def encrypt_password!
+    self.salt = SecureRandom.base64(8)
+    self.password = Digest::SHA2.hexdigest(self.salt + self.password)
+  end
 
   def generate_token!
     begin

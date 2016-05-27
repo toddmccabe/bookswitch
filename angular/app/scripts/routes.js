@@ -26,9 +26,14 @@ bookSwitchApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/book/search.html'
     })
     .state('book.show', {
-      url: '/book/:id?added',
+      url: '/book/:id?added&updated',
       controller: 'BookShowController',
       templateUrl: 'views/book/show.html'
+    })
+    .state('book.update', {
+      url: '/book/update/:id',
+      controller: 'BookUpdateController',
+      templateUrl: 'views/book/update.html'
     })
     .state('book.destroy', {
       url: '/book/destroy/:id?removed',

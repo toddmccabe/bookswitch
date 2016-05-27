@@ -3,7 +3,7 @@ class UserController < ApplicationController
     user = User.new(private_params(User))
 
     if user.save
-      UserMailer.confirmation(user).deliver_now
+      UserMailer.confirmation(user)
     else
       render json: {errors: user.errors}, status: 418
     end
@@ -38,6 +38,11 @@ class UserController < ApplicationController
 
     if user
       user.attributes = private_params(User)
+
+      # if they submitted a new password, encrypt it
+      if params[:password]
+        user.encrypt_password!
+      end
 
       if user.save
         head 200

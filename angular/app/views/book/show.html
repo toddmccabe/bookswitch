@@ -1,65 +1,75 @@
-<div class="alert alert-success" ng-show="added">
-  Your book has been added. Would you like to
-  <a ui-sref="book.new">
-    add another book?
-  </a>
-</div>
+<error errors="errors"></error>
 
-<div class="row">
-  <div class="col-md-4 text-right bold">
-    Title
-  </div>
-  <div class="col-md-8">
-    {{book.title}}
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-4 text-right bold">
-    Author
-  </div>
-  <div class="col-md-8">
-    {{book.author}}
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-4 text-right bold">
-    ISBN
-  </div>
-  <div class="col-md-8">
-    {{book.isbn}}
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-4 text-right bold">
-    Price
-  </div>
-  <div class="col-md-8">
-    {{book.price | currency}}
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-4 text-right bold">
-    User
-  </div>
-  <div class="col-md-8">
-    <a ui-sref="user.show({id: book.user_id})">
-      {{book.user_id}}
+<div ng-show="book">
+  <div class="alert alert-success" ng-show="added">
+    Your book has been added. Would you like to
+    <a ui-sref="book.new">
+      add another book?
     </a>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-8 col-md-offset-4">
-    <a ui-sref="message.new({to: book.user_id, book: book.id})" class="btn btn-primary" ng-hide="isOwner">
-      Ask a question about this book
-    </a>
 
-    <div ng-show="isOwner">
-      <a ui-sref="book.edit({id: book.id})" class="btn btn-primary">
-        Edit
-      </a>
-      <a ui-sref="book.destroy({id: book.id})" class="btn btn-success">
-        Remove
-      </a>
+  <div class="alert alert-success" ng-show="updated">
+    Your book has been updated.
+  </div>
+
+  <div class="padded-grid-medium">
+    <div class="row">
+      <div class="col-md-4 text-right bold">
+        Title
+      </div>
+      <div class="col-md-8">
+        {{book.title}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 text-right bold">
+        Author
+      </div>
+      <div class="col-md-8">
+        {{book.author}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 text-right bold">
+        ISBN
+      </div>
+      <div class="col-md-8">
+        {{book.isbn}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 text-right bold">
+        Price
+      </div>
+      <div class="col-md-8">
+        {{book.price | currency}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 text-right bold">
+        User
+      </div>
+      <div class="col-md-8">
+        <a ui-sref="user.show({id: book.user_id})">
+          {{book.user_id}}
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-4">
+        <a ui-sref="message.new({to: book.user_id, book: book.id})" class="btn btn-primary" ng-hide="isOwner">
+          Request this book
+        </a>
+
+        <div ng-show="isOwner">
+          <a ui-sref="book.update({id: book.id})" class="btn btn-primary">
+            Edit
+          </a>
+          <a ui-sref="book.destroy({id: book.id})" class="btn btn-success">
+            Remove
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

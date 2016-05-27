@@ -9,15 +9,13 @@ class SessionController < ApplicationController
   end
 
   def create
-    # attempt to log in with username and password
-    user = User.where(:username => { :$regex => /^#{params[:usernameEmail]}$/i },
-                      :password => params[:password]).first
+    # find user by username
+    user = User.where(:username => { :$regex => /^#{params[:usernameEmail]}$/i }).first
+    # or, find user by email
+    user ||= User.where(:email => { :$regex => /^#{params[:usernameEmail]}$/i }).first
 
-    # if that failed, attempt to log in with email and password
-    user ||= User.where(:email => { :$regex => /^#{params[:usernameEmail]}$/i },
-                      :password => params[:password]).first
-
-    if user
+    # if user exists, and password matches encrypted submitted password
+    if user && user.password == Digest::SHA2.hexdigest(user.salt + params[:password])
       # reactivate account on login
       if !user.active
         user.active = true
