@@ -1,0 +1,39 @@
+<error errors="errors"></error>
+
+<form class="form-horizontal" autocomplete="off">
+  <div class="form-group form-group-information">
+    <label class="control-label col-md-4">
+      To
+    </label>
+    <div class="col-md-4">
+      <a ui-sref="user.show({username: conversation.toUsername})">
+        {{conversation.toUsername}}
+      </a>
+    </div>
+  </div>
+  <div class="form-group form-group-information" ng-show="book">
+    <label class="control-label col-md-4">
+      Book
+    </label>
+    <div class="col-md-4">
+      <a ui-sref="book.show({id: book.id})">
+        {{book.title}}
+      </a>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="message" class="control-label col-md-4">
+      Message
+    </label>
+    <div class="col-md-4">
+      <textarea id="message" class="form-control" rows="3" ng-model="conversation.messageBody"></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-offset-4 col-md-4">
+      <button type="submit" class="btn btn-primary" ng-click="create()">
+        Send
+      </button>
+    </div>
+  </div>
+</form>

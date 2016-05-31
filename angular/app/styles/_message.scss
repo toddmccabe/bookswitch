@@ -1,0 +1,33 @@
+.messages {
+  .message {
+    margin-bottom: 20px;  
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    &.sender {
+      text-align: right;
+
+      .well {
+        float: right;
+      }
+    }
+
+    .well {
+      display: inline-block;
+      max-width: 40%;
+      margin-bottom: 7px;
+    }
+
+    .info {
+      clear: both;
+      font-size: 10px;
+      padding: 0 2px;
+    }
+  }
+}
+
+.messages-update-form {
+  margin-top: 40px;
+}

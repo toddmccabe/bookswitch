@@ -28,10 +28,10 @@ bookSwitchApp.controller('BookNewController', function($scope, $state, Book, ISB
 
   // save book to API
   $scope.create = function() {
-    // add the session token to book properties so we don't expose it in the url
-    $scope.book.token = SiteData.get('token');
-
-    $scope.book.$save({}, function(response) {
+    $scope.book.$save({
+      username: SiteData.get('username'),
+      token: SiteData.get('token')
+    }, function(response) {
       $state.go('book.show', {
         id: response.id,
         added: true

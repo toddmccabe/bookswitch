@@ -50,14 +50,14 @@
         User
       </div>
       <div class="col-md-8">
-        <a ui-sref="user.show({id: book.user_id})">
-          {{book.user_id}}
+        <a ui-sref="user.show({username: book.username})">
+          {{book.username}}
         </a>
       </div>
     </div>
     <div class="row">
       <div class="col-md-8 col-md-offset-4">
-        <a ui-sref="message.new({to: book.user_id, book: book.id})" class="btn btn-primary" ng-hide="isOwner">
+        <a ui-sref="conversation.new({to: book.username, book: book.id})" class="btn btn-primary" ng-hide="isOwner">
           Request this book
         </a>
 

@@ -10,16 +10,25 @@
   </h3>
 
   <div ng-show="isUser">
-    <a ui-sref="user.update({id: user.username})" class="btn btn-primary">
-      Edit
-    </a>
-    <a ui-sref="user.deactivate({id: user.username})" class="btn btn-success">
-      Deactivate
-    </a>
+    <div>
+      <a ui-sref="user.update({username: user.username})" class="btn btn-primary">
+        Edit
+      </a>
+      <a ui-sref="user.deactivate({username: user.username})" class="btn btn-success">
+        Deactivate
+      </a>
+    </div>
+    <br />
+
+    <conversation-list></conversation-list>
   </div>
 
+  <div ng-show="!isUser">
+    <a ui-sref="conversation.new({to: user.username})" class="btn btn-primary">
+      Send a message
+    </a>
+  </div>
   <br />
-  <h3>{{user.username | possessive}} books</h3>
-
-  <book-list books="books" total-count="totalCount" page="page" sort="sort" direction="direction"></book-list>
+  
+  <book-list></book-list>
 </div>

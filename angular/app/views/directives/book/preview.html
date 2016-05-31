@@ -1,0 +1,22 @@
+<div ng-show="book">
+  <div class="well well-sm">
+   <strong>{{book.title}}</strong>
+    by
+    <strong>{{book.author}}</strong>
+    <br />
+
+    <strong>ISBN:</strong>
+    {{book.isbn}}
+    <br />
+
+    <strong>Price:</strong>
+    {{book.price | currency}}
+    <br />
+
+    <strong>User:</strong>
+    <a ui-sref="user.show({username: book.username})">
+      {{book.username}}
+    </a>
+  </div>
+  <br />
+</div>

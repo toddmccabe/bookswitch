@@ -65,18 +65,32 @@ bookSwitchApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/user/logout.html'
     })
     .state('user.show', {
-      url: '/user/:id?updated&page&sort&direction',
+      url: '/user/:username?updated&page&sort&direction',
       controller: 'UserShowController',
       templateUrl: 'views/user/show.html'
     })
     .state('user.update', {
-      url: '/user/update/:id',
+      url: '/user/update/:username',
       controller: 'UserUpdateController',
       templateUrl: 'views/user/update.html'
     })
     .state('user.deactivate', {
-      url: '/user/deactivate/:id',
+      url: '/user/deactivate/:username',
       controller: 'UserDeactivateController',
       templateUrl: 'views/user/deactivate.html'
+    })
+    .state('conversation', {
+      parent: 'application',
+      templateUrl: 'views/layout/yield.html'
+    })
+    .state('conversation.new', {
+      url: '/conversation/new/?to&book',
+      controller: 'ConversationNewController',
+      templateUrl: 'views/conversation/new.html'
+    })
+    .state('conversation.update', {
+      url: '/conversation/update/:id?sent',
+      controller: 'ConversationUpdateController',
+      templateUrl: 'views/conversation/update.html'
     });
 });

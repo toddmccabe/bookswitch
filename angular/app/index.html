@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>
-      BookSwitch.org - A place to trade books
+      BookSwitch - An online library
     </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
@@ -17,7 +17,6 @@
     <!-- endbuild -->
   </head>
   <body ng-app="bookSwitchApp">
-    <!-- Add your site or application content here -->
     <div ui-view></div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -64,10 +63,14 @@
     <script src="scripts/controllers/user/show.js"></script>
     <script src="scripts/controllers/user/update.js"></script>
     <script src="scripts/controllers/user/deactivate.js"></script>
+    <script src="scripts/controllers/conversation/new.js"></script>
+    <script src="scripts/controllers/conversation/update.js"></script>
 
     <script src="scripts/directives/error.js"></script>
     <script src="scripts/directives/search_by_image.js"></script>
     <script src="scripts/directives/book/list.js"></script>
+    <script src="scripts/directives/book/preview.js"></script>
+    <script src="scripts/directives/conversation/list.js"></script>
     <script src="scripts/directives/sort_link.js"></script>
     <script src="scripts/directives/focus_if_event.js"></script>
 
@@ -78,6 +81,7 @@
     <script src="scripts/factories/user.js"></script>
     <script src="scripts/factories/isbn_lookup.js"></script>
     <script src="scripts/factories/barcode_scanner.js"></script>
+    <script src="scripts/factories/conversation.js"></script>
 
     <script src="scripts/filters/possessive.js"></script>
     <!-- endbuild -->

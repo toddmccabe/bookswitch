@@ -1,55 +1,68 @@
-<div class="book-list">
-  <div class="book-list-header row">
+<h3 ng-hide="p.query">Books</h3>
+<h3 ng-show="p.query">Books matching {{p.query}}</h3>
+
+<div class="item-list" ng-show="bookCount > 0">
+  <div class="item-list-header row">
     <div class="col-sm-5">
-      <sort-link label="Title" property="title" sort="sort" page="page" direction="direction"></sort-link>
+      <sort-link label="Title" property="title" sort="p.sort" page="p.page" direction="p.direction"></sort-link>
     </div>
     <div class="col-sm-4">
-      <sort-link label="Author" property="author" sort="sort" page="page" direction="direction"></sort-link>
+      <sort-link label="Author" property="author" sort="p.sort" page="p.page" direction="p.direction"></sort-link>
     </div>
     <div class="col-sm-2">
-      <sort-link label="ISBN" property="isbn" sort="sort" page="page" direction="direction"></sort-link>
+      <sort-link label="ISBN" property="isbn" sort="p.sort" page="p.page" direction="p.direction"></sort-link>
     </div>
     <div class="col-sm-1">
-      <sort-link label="Price" property="price" sort="sort" page="page" direction="direction"></sort-link>
+      <sort-link label="Price" property="price" sort="p.sort" page="p.page" direction="p.direction"></sort-link>
     </div>
   </div>
 
-  <div class="book-list-item row" ng-repeat="book in books">
+  <div class="item-list-item row" ng-repeat="book in books">
     <a ui-sref="book.show({id: book.id})">
-      <div class="col-sm-5">
+      <div class="col-sm-5 overflow-ellipsis">
         {{book.title}}
       </div>
-      <div class="col-sm-4">
+      <div class="col-sm-4 overflow-ellipsis">
         {{book.author}}
       </div>
-      <div class="col-sm-2">
+      <div class="col-sm-2 overflow-ellipsis">
         {{book.isbn}}
       </div>
-      <div class="col-sm-1">
+      <div class="col-sm-1 overflow-ellipsis">
         {{book.price | currency}}
       </div>
     </a>
   </div>
 
-  <div class="text-center" ng-show="totalCount > books.length">
+  <div class="text-center" ng-show="bookCount > books.length">
     <ul class="pagination">
-      <li ng-class="{'disabled': page == 1}">
-        <a href="" ng-click="setPage(page - 1)">
+      <li ng-class="{'disabled': (p.page == 1 || p.page == undefined)}">
+        <a href="" ng-click="changePage(-1)">
           Previous
         </a>
       </li>
 
-      <li ng-repeat="i in totalPages.toArray() track by $index" ng-class="{'active': (page == $index + 1 || !page && $index == 0)}">
+      <li ng-repeat="i in totalPages.toArray() track by $index" ng-class="{'active': (p.page == $index + 1 || !p.page && $index == 0)}">
         <a href="" ng-click="setPage($index + 1)">
           {{$index + 1}}
         </a>
       </li>
 
-      <li ng-class="{'disabled': page == totalPages}">
-        <a href="" class="book-list-pagination-next" ng-click="setPage($index + 2)">
+      <li ng-class="{'disabled': p.page == totalPages}">
+        <a href="" class="item-list-pagination-next" ng-click="changePage(1)">
           Next
         </a>
       </li>
     </ul>
+  </div>
+</div>
+
+<div ng-show="bookCount == 0">
+  <div ng-show="p.username">
+    You have no books.
+  </div>
+
+  <div ng-show="p.query">
+    No results.
   </div>
 </div>

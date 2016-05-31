@@ -22,9 +22,9 @@ class UserController < ApplicationController
   end
 
   def show
-    user = User.find_by_username(params[:id])
+    user = User.find_from_any_case_username(params[:id])
 
-    if !user
+    if !user || !user.active
       head 404
     elsif user.token === params[:token]
       render json: user.as_json(:only => [:username, :email])

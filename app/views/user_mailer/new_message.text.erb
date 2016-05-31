@@ -1,0 +1,7 @@
+<% if @book %>
+Book: <%= @book.title %>
+<% end %>
+Message: <%= @message.body %>
+
+Please use the link below to reply.
+https://devbox:9000/#/conversation/update/<%= @message.conversation.id %>

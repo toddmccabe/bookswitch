@@ -11,8 +11,7 @@ bookSwitchApp.controller('UserLoginController', function($scope, $state, $stateP
     session.usernameEmail = $('#usernameEmail').val();
     session.password = $('#password').val();
 
-    session.$save({
-    }, function(response) {
+    session.$save({}, function(response) {
       if($scope.rememberMe) {
         SiteData.set('saveToCookie', true);
       }
@@ -21,7 +20,7 @@ bookSwitchApp.controller('UserLoginController', function($scope, $state, $stateP
       SiteData.set('username', response.username);
 
       $state.go('user.show', {
-        id: response.username
+        username: response.username
       });
     }, function(response) {
       $scope.errors = response.data.error;

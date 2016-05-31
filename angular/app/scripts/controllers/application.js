@@ -4,6 +4,7 @@ bookSwitchApp.controller('ApplicationController', function($scope, $state, SiteD
     return SiteData.get('username');
   },
   function(value) {
+    // automatically update $scope.username
     $scope.username = value;
 
     // validate session

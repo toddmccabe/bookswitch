@@ -3,8 +3,7 @@ bookSwitchApp.controller('UserNewController', function($scope, User) {
   $scope.created = false;
 
   $scope.create = function() {
-    $scope.user.$save({
-    }, function() {
+    $scope.user.$save({}, function() {
       $scope.created = true;
     }, function(response) {
       $scope.errors = response.data.errors;

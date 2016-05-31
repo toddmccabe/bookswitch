@@ -1,13 +1,19 @@
 class BookController < ApplicationController
   def index
+    sort = params[:sort]
     query = params[:query]
     username = params[:username]
-    page = params[:page] ? params[:page].to_i : 1
-    sort = params[:sort]
     direction = params[:direction] || 'asc'
+    page = params[:page] ? params[:page].to_i : 1
 
-    if username && user = User.find_by_username(username)
-      books = user.books
+    if username
+      user = User.find_from_any_case_username(username)
+      if user && user.active
+        books = user.books
+      else
+        head 404
+        return
+      end
     else
       # find books that match query
       if query
@@ -20,7 +26,7 @@ class BookController < ApplicationController
     end
 
     # apply page number
-    if page > 0
+    if page > 1
       books = books.offset((page - 1) * Rails.configuration.x.results_per_page)
     end
 
@@ -31,12 +37,15 @@ class BookController < ApplicationController
     # limit to X books per page
     books = books.limit(Rails.configuration.x.results_per_page)
 
-    render json: {books: books, total_count: books.count}
+    render json: {
+      books: books.as_json(methods: :username),
+      total_count: books.count
+    }
   end
 
   def create
     book = Book.new(private_params(Book))
-    book.user = User.find_by_token(params[:token])
+    book.user = User.find_from_token(params)
 
     if book.save
       render json: book
@@ -46,21 +55,18 @@ class BookController < ApplicationController
   end
 
   def show
-    book = Book.find_by_id(params[:id])
+    book = Book.find(params[:id])
 
-    if book
-      # replace database identifier with username for user friendly urls
-      book.user_id = book.user.username
-
-      render json: book
+    if book && book.user.active
+      render json: book.as_json(methods: :username)
     else
       render json: {errors: 'We were unable to find that book.'}, status: 404
     end
   end
 
   def update
-    book = Book.find_by_id(params[:id])
-    user = User.find_by_username_and_token(params[:username], params[:token])
+    book = Book.find(params[:id])
+    user = User.find_from_token(params)
 
     if book && user && book.user == user
       book.attributes = private_params(Book)
@@ -76,8 +82,8 @@ class BookController < ApplicationController
   end
 
   def destroy
-    book = Book.find_by_id(params[:id])
-    user = User.find_by_username_and_token(params[:username], params[:token])
+    book = Book.find(params[:id])
+    user = User.find_from_token(params)
 
     if book && user && book.user == user
       book.delete

@@ -1,0 +1,18 @@
+label {
+  cursor: pointer;
+}
+
+textarea {
+  margin-top: 7px;
+}
+
+.form-group-information {
+  label {
+    cursor: default;
+  }
+
+  > div {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+}
