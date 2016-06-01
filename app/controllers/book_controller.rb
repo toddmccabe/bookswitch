@@ -30,9 +30,13 @@ class BookController < ApplicationController
       books = books.offset((page - 1) * Rails.configuration.x.results_per_page)
     end
 
-    # apply sort and direction (asc/desc), with title being default
+    # apply sort and direction (asc/desc), with created_at being default
     # note: mongodb doesn't allow case insensitive sorting
-    books = books.sort((Book.column_names.include?(sort) ? sort : :title).to_sym.instance_eval(direction))
+    if Book.column_names.include?(sort)
+      books = books.sort(sort.to_sym.instance_eval(direction))
+    else
+      books = books.sort(:created_at.desc)
+    end
 
     # limit to X books per page
     books = books.limit(Rails.configuration.x.results_per_page)

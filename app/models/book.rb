@@ -15,6 +15,8 @@ class Book
 
   before_validation :capitalize_fields!, :format_isbn!
 
+  timestamps!
+
   # capitalize the first letter of title and author
   # these should always be capitalized but it fixes
   # mongodb's inability to sort case-insensitive

@@ -1,5 +1,4 @@
 class MetadataController < ApplicationController
-  # todo: rate limit API calls
   # todo: copy image to local and return new url
   def show
     @metadata = Metadata.new(metadata_params).find()
