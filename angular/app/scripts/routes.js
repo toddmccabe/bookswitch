@@ -55,7 +55,7 @@ bookSwitchApp.config(function($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/user/confirm.html'
     })
     .state('user.login', {
-      url: '/user/login?confirmed',
+      url: '/user/login?confirmed&afterURL',
       controller: 'UserLoginController',
       templateUrl: 'views/user/login.html'
     })

@@ -1,4 +1,6 @@
 class MetadataController < ApplicationController
+  # todo: rate limit API calls
+  # todo: copy image to local and return new url
   def show
     @metadata = Metadata.new(metadata_params).find()
 
@@ -8,6 +10,7 @@ class MetadataController < ApplicationController
   private
 
   def metadata_params
-    params.permit(:isbn, :ean, :upc)
+    # todo: combine these with symbols in model
+    params.permit(:isbn10, :ean, :isbn13, :upc)
   end
 end

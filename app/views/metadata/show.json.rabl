@@ -1,6 +1,6 @@
 object @metadata.ItemLookupResponse.Items
 
-code :data do |response|
+code :book do |response|
   if response.Item
     # Amazon returns an object for single matches, and an array for multiple
     book = response.Item.is_a?(Array) ? response.Item.first : response.Item

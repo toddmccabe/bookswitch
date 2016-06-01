@@ -1,6 +1,10 @@
 <error errors="errors"></error>
 
-<form class="form-horizontal" autocomplete="off">
+<div class="alert alert-warning" ng-show="isSenderAndRecipient">
+  As fun as it might sound, you cannot message yourself.
+</div>
+
+<form class="form-horizontal" autocomplete="off" ng-hide="isSenderAndRecipient">
   <div class="form-group form-group-information">
     <label class="control-label col-md-4">
       To

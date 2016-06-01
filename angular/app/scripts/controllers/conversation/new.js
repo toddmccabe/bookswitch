@@ -6,6 +6,9 @@ bookSwitchApp.controller('ConversationNewController', function($scope, $state, $
   $scope.conversation.token = SiteData.get('token');
   $scope.conversation.toUsername = $stateParams.to;
 
+  // detect if user is attempting to message themselves
+  $scope.isSenderAndRecipient = ($scope.conversation.username === $scope.conversation.toUsername);
+
   // add optional reference to book
   if($stateParams.book) {
     Book.get({id: $stateParams.book}, function(response) {

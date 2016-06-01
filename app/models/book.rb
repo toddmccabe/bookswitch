@@ -29,7 +29,7 @@ class Book
   # todo: only allow numbers and a trailing 'X' in the ISBN
   def format_isbn!
     if !self.isbn.blank?
-      self.isbn = self.isbn.gsub(/\D/, '')
+      self.isbn = self.isbn.gsub(/[^\w]/, '')
     end
   end
 

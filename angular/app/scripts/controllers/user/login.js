@@ -1,9 +1,10 @@
-bookSwitchApp.controller('UserLoginController', function($scope, $state, $stateParams, Session, SiteData) {
+bookSwitchApp.controller('UserLoginController', function($scope, $state, $stateParams, $location, Session, SiteData) {
   var session = new Session();
 
   $scope.rememberMe = false;
   $scope.loginFailed = false;
   $scope.confirmed = $stateParams.confirmed;
+  $scope.afterURL = $stateParams.afterURL;
 
   $scope.login = function() {
     // get actual values from input elements
@@ -11,19 +12,26 @@ bookSwitchApp.controller('UserLoginController', function($scope, $state, $stateP
     session.usernameEmail = $('#usernameEmail').val();
     session.password = $('#password').val();
 
-    session.$save({}, function(response) {
-      if($scope.rememberMe) {
-        SiteData.set('saveToCookie', true);
-      }
+    session.$save({}, $scope.handleLoginSuccess, function(response) {
+      $scope.errors = response.data.error;
+    });
+  };
 
-      SiteData.set('token', response.token);
-      SiteData.set('username', response.username);
+  $scope.handleLoginSuccess = function(response) {
+    if($scope.rememberMe) {
+      SiteData.set('saveToCookie', true);
+    }
 
+    SiteData.set('token', response.token);
+    SiteData.set('username', response.username);
+
+    if($scope.afterURL) {
+      // todo: find out why $stateParams.afterURL is encoded twice
+      location.href = decodeURIComponent(decodeURIComponent($scope.afterURL));
+    } else {
       $state.go('user.show', {
         username: response.username
       });
-    }, function(response) {
-      $scope.errors = response.data.error;
-    });
+    }
   };
 });

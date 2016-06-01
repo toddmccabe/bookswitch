@@ -57,7 +57,7 @@
     </div>
     <div class="row">
       <div class="col-md-8 col-md-offset-4">
-        <a ui-sref="conversation.new({to: book.username, book: book.id})" class="btn btn-primary" ng-hide="isOwner">
+        <a ui-sref="conversation.new({to: book.username, book: book.id})" class="btn btn-primary" logged-in-only ng-hide="isOwner">
           Request this book
         </a>
 
