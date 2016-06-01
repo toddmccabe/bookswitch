@@ -3,8 +3,6 @@ class Book
 
   key :title,   String, :required => true
   key :author,  String, :required => true
-  # todo: convert isbn to number as we format it anyways
-  # this will fix isbn sorting as strings
   key :isbn,    String, :required => true
   key :price,   Float,  :required => true
   key :image,   String, :default => ''
@@ -28,7 +26,7 @@ class Book
     end
   end
 
-  # only allow numbers in the ISBN
+  # todo: only allow numbers and a trailing 'X' in the ISBN
   def format_isbn!
     if !self.isbn.blank?
       self.isbn = self.isbn.gsub(/\D/, '')

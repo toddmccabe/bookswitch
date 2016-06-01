@@ -5,12 +5,8 @@ gem 'rails-api'
 gem 'spring', :group => :development
 gem 'mongo_mapper'
 gem 'bson_ext'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+gem 'vacuum', '~> 1.4'
+gem 'rabl'
 
 # Use unicorn as the app server
 # gem 'unicorn'
