@@ -29,7 +29,7 @@ bookSwitchApp.directive('bookList', function($state, $stateParams, Book, appConf
 
       // increment/decrement page number
       $scope.changePage = function(modifier) {
-        var page = $scope.p.page || 1;
+        var page = parseInt($scope.p.page) || 1;
         $scope.setPage(page + modifier);
       }
     }
