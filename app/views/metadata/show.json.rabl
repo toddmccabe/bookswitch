@@ -10,8 +10,7 @@ code :book do |response|
     {
       :title => book.ItemAttributes.Title,
       :author => [book.ItemAttributes.Author].join(', '),
-      # disable image data until it can be saved and referenced locally
-      # :image => book.LargeImage.URL,
+      :image => Image.new(book.LargeImage.URL).id,
       :isbn10 => book.ItemAttributes.ISBN,
       :isbn13 => StdNum::ISBN.convert_to_13(book.ItemAttributes.ISBN),
       :upc => book.ItemAttributes.UPC,

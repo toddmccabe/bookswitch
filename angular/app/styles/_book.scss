@@ -1,0 +1,17 @@
+.book {
+  .book-image {
+    height: 210px;
+    margin-top: 5px;
+  }
+
+  .fa-book {
+    font-size: 150px;
+    color: $brand-success;
+  }
+
+  .book-attributes {
+    > div {
+      padding-bottom: 10px;
+    }
+  }
+}
