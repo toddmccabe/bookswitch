@@ -8,8 +8,16 @@ angular.module('bookSwitchApp').constant('appConfig', {
   // Quagga barcode capture config
   quagga: {
     inputStream: {
-      name: 'Live',
-      type: 'LiveStream'
+      // most browsers, including android
+      getUserMediaSupported: {
+        name: 'Live',
+        type: 'LiveStream'
+      },
+
+      // iOS
+      getUserMediaNotSupported: {
+        size: 800
+      }
     },
     decoder: {
       readers: [

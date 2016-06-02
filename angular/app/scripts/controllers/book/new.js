@@ -18,7 +18,7 @@ bookSwitchApp.controller('BookNewController', function($scope, $state, Book, Bar
 
   // copy data from barcode scan -> api -> $scope.book
   $scope.updateFields = function(barcodeLookupResponse) {
-    $scope.book = Object.assign($scope.book, barcodeLookupResponse.data.book);
+    $scope.book = angular.merge($scope.book, barcodeLookupResponse.data.book);
 
     // used to autofocus price field
     if(barcodeLookupResponse.data.book)

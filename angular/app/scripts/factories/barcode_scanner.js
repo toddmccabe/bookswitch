@@ -1,29 +1,38 @@
-bookSwitchApp.factory('BarcodeScanner', function($q, appConfig) {
+bookSwitchApp.factory('BarcodeScanner', function($q, BrowserSupport, appConfig) {
   var preview;
 
   return {
     isRunning: false,
     scopeID: null,
 
-    scan: function(config) {
+    // returns QuaggaJS config object based on browser support
+    getConfig: function() {
+      var inputStream = BrowserSupport.detect.getUserMedia() ?
+                        appConfig.quagga.inputStream.getUserMediaSupported :
+                        appConfig.quagga.inputStream.getUserMediaNotSupported;
+
+      return {
+        inputStream: inputStream,
+        decoder: {
+          readers: appConfig.quagga.decoder.readers
+        },
+        locate: appConfig.quagga.locate
+      }
+    },
+
+    // search for a barcode from camera stream
+    scanFromStream: function(config) {
       var deferred = $q.defer(),
           _this = this;
 
       preview = config.scanPreview;
       _this.scopeID = config.scopeID;
 
+      // merge parameters into config
+      config = angular.merge(config, this.getConfig());
+
       // initialize and start Quagga
-      Quagga.init({
-        inputStream : {
-          name : appConfig.quagga.inputStream.name,
-          type : appConfig.quagga.inputStream.type,
-          target: config.scanPreview
-        },
-        decoder : {
-          readers : appConfig.quagga.decoder.readers
-        },
-        locate: appConfig.quagga.locate
-      }, function(error) {
+      Quagga.init(config, function(error) {
         if(error) {
           alert('Unable to access your camera. Please enter the ISBN manually.');
           console.log(error);
@@ -64,6 +73,23 @@ bookSwitchApp.factory('BarcodeScanner', function($q, appConfig) {
       $(preview).empty();
 
       this.isRunning = false;
+    },
+
+    // search for a barcode from file upload select
+    scanFromFile: function(config) {
+      var deferred = $q.defer();
+
+      config = angular.merge(config, this.getConfig());
+
+      Quagga.decodeSingle(config, function(data) {
+        if(data) {
+          deferred.resolve(data);
+        } else {
+          deferred.reject();
+        }
+      });
+
+      return deferred.promise;
     }
   }
 });

@@ -1,4 +1,4 @@
-bookSwitchApp.controller('ApplicationController', function($scope, $state, SiteData, Session) {
+bookSwitchApp.controller('ApplicationController', function($scope, $state, SiteData, Session, BrowserSupport) {
   // automatically update scope username from SiteData factory
   $scope.$watch(function() {
     return SiteData.get('username');
@@ -22,4 +22,7 @@ bookSwitchApp.controller('ApplicationController', function($scope, $state, SiteD
       });
     }
   });
+
+  // add css classes to document for detecting browser support
+  BrowserSupport.addCssClasses();
 });

@@ -12,4 +12,37 @@
       z-index: 10;
     }
   }
+
+  // http://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
+  input[type="file"] {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+}
+
+// link is for streaming barcode scan
+a.search-by-image-link {
+  .get-user-media-not-supported & {
+    display: none;
+  }
+}
+
+// label is for file-upload barcode scan
+label.search-by-image-link {
+  color: $link-color;
+  margin-bottom: 0;
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+
+  .get-user-media-supported & {
+    display: none;
+  }
 }
