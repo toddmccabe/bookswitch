@@ -1,4 +1,10 @@
-bookSwitchApp.controller('BookNewController', function($scope, $state, Book, BarcodeLookup, SiteData) {
+bookSwitchApp.controller('BookNewController', function(
+  $scope,
+  $state,
+  Book,
+  BarcodeLookup,
+  SiteData
+) {
   $scope.book = new Book();
 
   // save book to API
@@ -25,7 +31,7 @@ bookSwitchApp.controller('BookNewController', function($scope, $state, Book, Bar
       $scope.$broadcast('barcodeLookupSuccess');
   };
 
-  $scope.$watch('book.isbn', function(value) {
-    BarcodeLookup.search(value).then($scope.updateFields)
+  $scope.$watch('book.isbn10', function(value) {
+    BarcodeLookup.search(value).then($scope.updateFields);
   });
 });

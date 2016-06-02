@@ -1,4 +1,9 @@
-bookSwitchApp.directive('bookList', function($state, $stateParams, Book, appConfig) {
+angular.module('bookSwitchApp').directive('bookList', function(
+  $state,
+  $stateParams,
+  Book,
+  appConfig
+) {
   return {
     scope: true,
     templateUrl: 'views/directives/book/list.html',

@@ -7,6 +7,7 @@ gem 'mongo_mapper'
 gem 'bson_ext'
 gem 'vacuum', '~> 1.4'
 gem 'rabl'
+gem 'library_stdnums'
 
 # Use unicorn as the app server
 # gem 'unicorn'

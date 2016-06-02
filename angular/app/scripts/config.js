@@ -32,14 +32,11 @@ angular.module('bookSwitchApp').constant('appConfig', {
     isbn10: {
       length: 10
     },
-    upc: {
-      length: 12
-    },
     isbn13: {
       length: 13
     },
-    ean: {
-      length: 13
+    upc: {
+      length: 12
     }
   }
 });

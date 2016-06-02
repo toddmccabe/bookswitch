@@ -29,12 +29,28 @@
         {{book.author}}
       </div>
     </div>
-    <div class="row">
+    <div class="row" ng-show="book.isbn10">
       <div class="col-md-4 text-right bold">
         ISBN
       </div>
       <div class="col-md-8">
-        {{book.isbn}}
+        {{book.isbn10}}
+      </div>
+    </div>
+    <div class="row" ng-show="book.isbn13">
+      <div class="col-md-4 text-right bold">
+        ISBN13
+      </div>
+      <div class="col-md-8">
+        {{book.isbn13}}
+      </div>
+    </div>
+    <div class="row" ng-show="book.upc">
+      <div class="col-md-4 text-right bold">
+        UPC
+      </div>
+      <div class="col-md-8">
+        {{book.upc}}
       </div>
     </div>
     <div class="row">

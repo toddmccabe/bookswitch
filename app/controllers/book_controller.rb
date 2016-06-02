@@ -6,20 +6,28 @@ class BookController < ApplicationController
     direction = params[:direction] || 'asc'
     page = params[:page] ? params[:page].to_i : 1
 
+    # query user's books
     if username
       user = User.find_from_any_case_username(username)
-      if user && user.active
-        books = user.books
-      else
+
+      if !user || !user.active
         head 404
         return
       end
+
+      books = user.books
     else
-      # find books that match query
+      # query all books
       if query
         queryRegEx = Regexp.new(Regexp.escape(query), true);
 
-        books = Book.where(:$or => [{:title => queryRegEx}, {:author => queryRegEx}, {:isbn => queryRegEx}])
+        books = Book.where(:$or => [
+          {:title   => queryRegEx},
+          {:author  => queryRegEx},
+          {:isbn10  => queryRegEx},
+          {:isbn13  => queryRegEx},
+          {:upc     => queryRegEx},
+        ])
       else
         books = Book.where()
       end
@@ -48,11 +56,11 @@ class BookController < ApplicationController
   end
 
   def create
-    book = Book.new(private_params(Book))
+    book = Book.new(book_params)
     book.user = User.find_from_token(params)
 
     if book.save
-      render json: book
+      render json: {id: book.id}
     else
       render json: {errors: book.errors}, status: 418
     end
@@ -72,16 +80,17 @@ class BookController < ApplicationController
     book = Book.find(params[:id])
     user = User.find_from_token(params)
 
-    if book && user && book.user == user
-      book.attributes = private_params(Book)
-
-      if book.save
-        head 200
-      else
-        render json: {errors: book.errors}, status: 418
-      end
-    else
+    if !user || user != book.user
       head 401
+      return
+    end
+
+    book.attributes = book_params
+
+    if book.save
+      head 200
+    else
+      render json: {errors: book.errors}, status: 418
     end
   end
 
@@ -89,12 +98,25 @@ class BookController < ApplicationController
     book = Book.find(params[:id])
     user = User.find_from_token(params)
 
-    if book && user && book.user == user
-      book.delete
-      
-      head 200
-    else
+    if !user || user != book.user
       head 401
+      return
     end
+
+    book.delete
+  end
+
+  private
+
+  def book_params
+    params.permit(
+      :title,
+      :author,
+      :price,
+      :image,
+      :isbn10,
+      :isbn13,
+      :upc
+    )
   end
 end

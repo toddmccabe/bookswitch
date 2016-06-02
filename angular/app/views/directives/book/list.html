@@ -10,7 +10,7 @@
       <sort-link label="Author" property="author" sort="p.sort" page="p.page" direction="p.direction"></sort-link>
     </div>
     <div class="col-sm-2">
-      <sort-link label="ISBN" property="isbn" sort="p.sort" page="p.page" direction="p.direction"></sort-link>
+      <sort-link label="ISBN" property="isbn10" sort="p.sort" page="p.page" direction="p.direction"></sort-link>
     </div>
     <div class="col-sm-1">
       <sort-link label="Price" property="price" sort="p.sort" page="p.page" direction="p.direction"></sort-link>
@@ -26,7 +26,7 @@
         {{book.author}}
       </div>
       <div class="col-sm-2 overflow-ellipsis">
-        {{book.isbn}}
+        {{book.isbn10 || 'Not available'}}
       </div>
       <div class="col-sm-1 overflow-ellipsis">
         {{book.price | currency}}
@@ -58,11 +58,11 @@
 </div>
 
 <div ng-show="bookCount == 0">
-  <div ng-show="p.username">
-    You have no books.
-  </div>
-
   <div ng-show="p.query">
     No results.
+  </div>
+
+  <div ng-hide="p.query">
+    You have no books.
   </div>
 </div>

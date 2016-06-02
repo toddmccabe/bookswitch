@@ -1,6 +1,8 @@
 class Metadata
   include ActiveModel::Model
-  attr_accessor :lookup_format, :lookup_value
+
+  attr_accessor :lookup_format,
+                :lookup_value
 
   def initialize(attributes = {})
     # search params for ISBN, EAN, or UPC
