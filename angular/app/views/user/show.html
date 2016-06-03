@@ -20,7 +20,7 @@
     </div>
     <br />
 
-    <conversation-list></conversation-list>
+    <conversation-list ng-if="isUser"></conversation-list>
   </div>
 
   <div ng-show="!isUser">

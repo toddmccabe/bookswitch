@@ -75,27 +75,24 @@ class ConversationController < ApplicationController
   end
 
   def show
-    conversation = Conversation.find(params[:id])
+    @conversation = Conversation.find(params[:id])
     user = User.find_from_token(params)
 
     # check if conversation exists
-    if !conversation
+    if !@conversation
       render json: {errors: 'Unable to retrieve conversation. Please make sure you are logged in.'}, status: 404
       return
     end
 
     # ensure user is present in conversation.users
-    conversation.authenticate(user)
+    @conversation.authenticate(user)
 
     # mark the conversation messages as read for user
-    conversation.mark_messages_as_read!(user)
+    @conversation.mark_messages_as_read!(user)
 
-    render json: {
-      id: conversation.id,
-      book: conversation.books.last.as_json(:only => [:id]),
-      usernames: conversation.usernames,
-      # reverse to show messages from newest to oldest
-      messages: conversation.messages.reverse.as_json(:only => [:created_at, :body], :methods => :sender_username)
-    }
+    # show messages from newest -> oldest
+    @conversation.messages.reverse!
+
+    render
   end
 end

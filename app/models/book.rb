@@ -3,13 +3,15 @@ class Book
 
   belongs_to :user
 
-  key :title,   String, :required => true
-  key :author,  String, :required => true
-  key :price,   Float,  :required => true
+  key :title,   String,   :required => true
+  key :author,  String,   :required => true
+  key :price,   Float,    :required => true
   key :image,   String
   key :isbn10,  String
   key :isbn13,  String
   key :upc,     String
+  # acive flag used to hide books from results without deleting them
+  key :active,  Boolean,  :default => true
 
   attr_accessible :title,
                   :author,
@@ -28,6 +30,16 @@ class Book
 
   def username
     user.username
+  end
+
+  def activate!
+    self.active = true
+    save
+  end
+
+  def deactivate!
+    self.active = false
+    save
   end
 
   # capitalize the first letter of title and author

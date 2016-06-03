@@ -48,6 +48,7 @@ class Conversation
   # if the user isn't part of the conversation, return error
   def authenticate(user)
     if !users.include?(user)
+      # todo: don't render from a model. refactor this
       render json: {errors: 'Unable to access conversation. Please make sure you are logged in.'}
     end
   end

@@ -27,6 +27,12 @@ class User
 
   before_create :encrypt_password!, :generate_token!
 
+  # automatically activate/deactivate user's books
+  def active=(value)
+    value == true ? books.each(&:activate!) : books.each(&:deactivate!)
+    super
+  end
+
   def self.find_from_token(params)
     User.find_by_username_and_token(params[:username], params[:token])
   end

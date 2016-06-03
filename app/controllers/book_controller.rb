@@ -21,15 +21,18 @@ class BookController < ApplicationController
       if query
         queryRegEx = Regexp.new(Regexp.escape(query), true);
 
-        books = Book.where(:$or => [
-          {:title   => queryRegEx},
-          {:author  => queryRegEx},
-          {:isbn10  => queryRegEx},
-          {:isbn13  => queryRegEx},
-          {:upc     => queryRegEx},
-        ])
+        books = Book.where({
+          :active => true,
+          :$or => [
+            {:title   => queryRegEx},
+            {:author  => queryRegEx},
+            {:isbn10  => queryRegEx},
+            {:isbn13  => queryRegEx},
+            {:upc     => queryRegEx},
+          ]
+        })
       else
-        books = Book.where()
+        books = Book.where({:active => true})
       end
     end
 
