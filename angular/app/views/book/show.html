@@ -14,11 +14,7 @@
 
   <div class="book row">
     <div class="col-md-5 text-right">
-      <a href="/api/image/{{book.image}}.jpg" ng-show="book.image">
-        <img src="/api/image/{{book.image}}.jpg" class="book-image img-rounded" />
-      </a>
-
-      <i class="fa fa-book" ng-hide="book.image"></i>
+      <div ng-include="'views/book/image.html'"></div>
     </div>
     <div class="book-attributes col-md-7">
       <div>

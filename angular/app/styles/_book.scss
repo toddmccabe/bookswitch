@@ -1,17 +1,41 @@
+.book-image {
+  margin-top: 5px;
+}
+
+.book-icon {
+  color: $brand-success;
+}
+
+.book-attributes {
+  > div {
+    padding-bottom: 10px;
+  }
+}
+
 .book {
   .book-image {
     height: 210px;
-    margin-top: 5px;
   }
 
-  .fa-book {
+  .book-icon {
     font-size: 150px;
-    color: $brand-success;
+  }
+}
+
+.book-preview {
+  margin-bottom: 30px;
+
+  .book-image {
+    height: 100px;
+  }
+
+  .book-icon {
+    font-size: 116px;
   }
 
   .book-attributes {
     > div {
-      padding-bottom: 10px;
+      padding-bottom: 2px;
     }
   }
 }
