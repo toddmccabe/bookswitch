@@ -19,6 +19,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "item_list";
 @import "message";
 @import "book";
+@import "brands";
 
 body {
   background-color: #eff6e0;
@@ -66,10 +67,28 @@ h3 {
   text-overflow: ellipsis;
 }
 
-.br-15px {
+.br-gutter {
   margin-bottom: $grid-gutter-width;
+}
+
+.br-gutter-half {
+  margin-bottom: $grid-gutter-width / 2;
+}
+
+.br-gutter-third {
+  margin-bottom: $grid-gutter-width / 3;
 }
 
 .invisible {
   visibility: hidden;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-bottom-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

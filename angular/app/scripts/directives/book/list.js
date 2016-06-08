@@ -6,7 +6,9 @@ angular.module('bookSwitchApp').directive('bookList', function(
   appConfig
 ) {
   return {
-    scope: true,
+    scope: {
+      booksTotalCount: '='
+    },
     templateUrl: 'views/directives/book/list.html',
     link: function($scope) {
       // short for $scope.params

@@ -1,0 +1,41 @@
+<div ng-if="amazon.book">
+  <div class="bold br-gutter-third">
+    Where to find this book
+  </div>
+
+  <a href="{{amazon.book.amazon.link}}" ng-if="amazon">
+    <div class="well well-sm position-relative">
+      <div class="position-bottom-right br-gutter-third">
+        <img src="/images/brands/amazon/logo.png" class="amazon-logo" />
+      </div>
+
+      <div class="row">
+        <book-image book="amazon.book" link="amazon.book.amazon.link" class="col-ms-2 col-md-1 hidden-xs visible-ms" ng-if="amazon.book.image"></book-image>
+
+        <div ng-class="{'col-ms-10 col-md-11' : amazon.book.image, 'col-ms-12' : !amazon.book.image}">
+          <div class="col-ms-12 bold">
+            {{amazon.book.title}}
+          </div>
+
+          <div class="col-ms-12">
+            by {{amazon.book.author}}
+          </div>
+
+          <div class="col-ms-8" ng-show="amazon.book.amazon.price.new">
+            <strong>
+              New:
+            </strong>
+            {{amazon.book.amazon.price.new}}
+          </div>
+
+          <div class="col-ms-8" ng-show="amazon.book.amazon.price.used">
+            <strong>
+              Used:
+            </strong>
+            {{amazon.book.amazon.price.used}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </a>
+</div>

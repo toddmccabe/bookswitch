@@ -45,8 +45,9 @@
     </label>
     <label class="control-text col-sm-7">
       <a href="{{book.amazon.link}}" target="_blank">
+        <i class="fa fa-amazon amazon-color"></i>&nbsp;
+        
         <span ng-show="book.amazon.price.new">
-          <i class="fa fa-amazon"></i>
           <strong>
             New:
           </strong>
@@ -55,7 +56,6 @@
         </span>
 
         <span ng-show="book.amazon.price.used">
-          <i class="fa fa-amazon"></i>
           <strong>
             Used:
           </strong>

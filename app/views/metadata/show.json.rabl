@@ -7,6 +7,14 @@ code :book do |response|
            response.Item.first :
            response.Item
 
+    if lowest_new_price = book.OfferSummary.LowestNewPrice
+      price_new = lowest_new_price.FormattedPrice
+    end
+
+    if lowest_used_price = book.OfferSummary.LowestUsedPrice
+      price_used = lowest_used_price.FormattedPrice
+    end
+
     {
       :title => book.ItemAttributes.Title,
       :author => [book.ItemAttributes.Author].join(', '),
@@ -17,8 +25,8 @@ code :book do |response|
       :amazon => {
         :link => book.DetailPageURL,
         :price => {
-          :new => book.OfferSummary.LowestNewPrice.FormattedPrice,
-          :used => book.OfferSummary.LowestUsedPrice.FormattedPrice
+          :new => price_new,
+          :used => price_used
         }
       }
     }

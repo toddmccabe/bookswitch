@@ -7,7 +7,8 @@ angular.module('bookSwitchApp').controller('BookNewController', function(
 ) {
   $scope.book = new Book();
 
-  // load and remove previously entered ISBN
+  // load and remove previously entered ISBN. this is for the new
+  // user that fills out form, registers and returns to the form
   if(SiteData.get('lastIsbnEntered')) {
     $scope.book.isbn10 = SiteData.get('lastIsbnEntered');
     SiteData.remove('lastIsbnEntered');
