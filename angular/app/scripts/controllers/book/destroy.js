@@ -1,4 +1,10 @@
-bookSwitchApp.controller('BookDestroyController', function($scope, $state, $stateParams, Book, SiteData) {
+angular.module('bookSwitchApp').controller('BookDestroyController', function(
+  $scope,
+  $state,
+  $stateParams,
+  Book,
+  SiteData
+) {
   $scope.removed = false;
 
   $scope.destroy = function() {

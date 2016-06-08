@@ -1,5 +1,3 @@
-<error errors="errors"></error>
-
 <div class="alert alert-warning" ng-show="isSenderAndRecipient">
   As fun as it might sound, you cannot message yourself.
 </div>
@@ -33,6 +31,9 @@
       <textarea id="message" class="form-control" rows="3" ng-model="conversation.messageBody"></textarea>
     </div>
   </div>
+
+  <error errors="errors"></error>
+
   <div class="form-group">
     <div class="col-md-offset-4 col-md-4">
       <button type="submit" logged-in-only class="btn btn-primary" ng-click="create()">

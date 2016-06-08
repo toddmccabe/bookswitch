@@ -1,4 +1,9 @@
-bookSwitchApp.controller('UserConfirmController', function($scope, $state, $stateParams, User) {
+angular.module('bookSwitchApp').controller('UserConfirmController', function(
+  $scope,
+  $state,
+  $stateParams,
+  User
+) {
   User.confirm({
     token: $stateParams.token
   }, function() {

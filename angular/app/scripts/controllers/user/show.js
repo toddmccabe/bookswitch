@@ -1,5 +1,9 @@
-bookSwitchApp.controller('UserShowController', function($scope, $stateParams, User, SiteData) {
-  // todo: make conversation and book pagination/sorting parameters play nicely together
+angular.module('bookSwitchApp').controller('UserShowController', function(
+  $scope,
+  $stateParams,
+  User,
+  SiteData
+) {
   $scope.updated = $stateParams.updated;
 
   User.get({

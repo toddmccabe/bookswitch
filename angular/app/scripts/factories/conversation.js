@@ -1,4 +1,6 @@
-bookSwitchApp.factory('Conversation', function($resource) {
+angular.module('bookSwitchApp').factory('Conversation', function(
+  $resource
+) {
   return $resource('/api/conversation/:id', null, {
     'query': {
       isArray: false

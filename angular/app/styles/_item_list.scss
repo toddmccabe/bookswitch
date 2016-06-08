@@ -1,18 +1,16 @@
 .item-list {
+  margin-bottom: $grid-gutter-width;
+
   .item-list-header {
     padding-bottom: 2px;
     font-weight: bold;
   }
 
   .item-list-item {
-    padding: 4px 0;
+    padding: 6px 0;
 
     &:nth-child(odd) {
       background-color: #d3d9c9;
     }
-  }
-
-  .item-list-pagination-next {
-    min-width: 90px;
   }
 }

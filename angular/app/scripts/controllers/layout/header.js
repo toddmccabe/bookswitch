@@ -1,4 +1,8 @@
-bookSwitchApp.controller('LayoutHeaderController', function($scope, $state, $stateParams) {
+angular.module('bookSwitchApp').controller('LayoutHeaderController', function(
+  $scope,
+  $state,
+  $stateParams
+) {
   $scope.searchQuery = $stateParams.query;
 
   // if $scope.searchQuery changes from user input, or as

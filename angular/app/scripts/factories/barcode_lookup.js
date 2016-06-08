@@ -1,4 +1,8 @@
-bookSwitchApp.factory('BarcodeLookup', function($q, $http, appConfig) {
+angular.module('bookSwitchApp').factory('BarcodeLookup', function(
+  $q,
+  $http,
+  appConfig
+) {
   return {
     search: function(barcodeNumber) {
       var deferred = $q.defer();

@@ -1,4 +1,11 @@
-bookSwitchApp.controller('ConversationNewController', function($scope, $state, $stateParams, Conversation, Book, SiteData) {
+angular.module('bookSwitchApp').controller('ConversationNewController', function(
+  $scope,
+  $state,
+  $stateParams,
+  Conversation,
+  Book,
+  SiteData
+) {
   $scope.conversation = new Conversation();
 
   // add references to sender, recipient

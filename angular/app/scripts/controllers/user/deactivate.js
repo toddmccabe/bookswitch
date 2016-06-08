@@ -1,4 +1,10 @@
-bookSwitchApp.controller('UserDeactivateController', function($scope, $state, $stateParams, User, SiteData) {
+angular.module('bookSwitchApp').controller('UserDeactivateController', function(
+  $scope,
+  $state,
+  $stateParams,
+  User,
+  SiteData
+) {
   var user = new User();
 
   user.$get({username: $stateParams.username});

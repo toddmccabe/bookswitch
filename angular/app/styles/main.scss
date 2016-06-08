@@ -2,31 +2,46 @@
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
 // bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import 'bootstrap-sass-official/assets/stylesheets/_bootstrap.scss';
 @import "font-awesome/scss/font-awesome.scss";
 // endbower
 
+@import "form";
+@import "responsive";
 @import "header";
+@import "footer";
+@import "animation";
+@import "pagination";
+@import "grid";
+
+@import "error";
 @import "search_by_image";
 @import "item_list";
-@import "form";
 @import "message";
 @import "book";
 
 body {
   background-color: #eff6e0;
-  padding-bottom: 20px;
+  padding-bottom: $grid-gutter-width;
+  padding-bottom: 7px;
 }
 
 main {
-  padding: 30px;
+  @include clearfix;
+  padding: $grid-gutter-width;
+  padding-bottom: 0;
   background-color: #d8dece;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .alert {
   padding: 10px 15px;
+  margin-bottom: $grid-gutter-width;
   font-weight: bold;
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 .capitalize {
@@ -41,16 +56,20 @@ main {
   font-weight: bold;
 }
 
-* h3 {
+h3 {
   margin-top: 0;
-}
-
-a:not(.btn) {
-  text-decoration: underline;
 }
 
 .overflow-ellipsis {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.br-15px {
+  margin-bottom: $grid-gutter-width;
+}
+
+.invisible {
+  visibility: hidden;
 }

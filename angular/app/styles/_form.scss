@@ -2,6 +2,16 @@ label {
   cursor: pointer;
 }
 
+/* align all buttons to the right as most people are right-handed */
+.btn {
+  float: right;
+  margin-left: 4px;
+
+  &.pull-left {
+    margin-left: 0;
+  }
+}
+
 textarea {
   margin-top: 7px;
 }
@@ -14,5 +24,20 @@ textarea {
   > div {
     padding-top: 7px;
     padding-bottom: 7px;
+  }
+}
+
+.error {
+  &:before {
+    @extend .fa;
+    position: absolute;
+    content: '\f00d';
+    font-family: FontAwesome;
+    font-size: 15px;
+    margin-top: 2px;
+  }
+
+  > span {
+    margin-left: 18px;
   }
 }

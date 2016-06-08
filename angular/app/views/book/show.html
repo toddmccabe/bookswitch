@@ -1,5 +1,3 @@
-<error errors="errors"></error>
-
 <div ng-show="book">
   <div class="alert alert-success" ng-show="added">
     Your book has been added. Would you like to
@@ -12,76 +10,27 @@
     Your book has been updated.
   </div>
 
-  <div class="book row">
-    <div class="col-md-5 text-right">
-      <div ng-include="'views/book/image.html'"></div>
-    </div>
-    <div class="book-attributes col-md-7">
-      <div>
-        <strong>
-          Title:
-        </strong>
+  <div class="book">
+    <div class="row">
+      <book-preview book="book"></book-preview>
 
-        {{book.title}}
-      </div>
-      <div>
-        <strong>
-          Author:
-        </strong>
-
-        {{book.author}}
-      </div>
-      <div ng-show="book.isbn10">
-        <strong>
-          ISBN:
-        </strong>
-
-        {{book.isbn10}}
-      </div>
-      <div ng-show="book.isbn13">
-        <strong>
-          ISBN13:
-        </strong>
-
-        {{book.isbn13}}
-      </div>
-      <div ng-show="book.upc">
-        <strong>
-          UPC:
-        </strong>
-
-        {{book.upc}}
-      </div>
-      <div>
-        <strong>
-          Price:
-        </strong>
-
-        {{book.price | currency}}
-      </div>
-      <div>
-        <strong>
-          User:
-        </strong>
-
-        <a ui-sref="user.show({username: book.username})">
-          {{book.username}}
-        </a>
-      </div>
-      <div>
-        <a ui-sref="conversation.new({to: book.username, book: book.id})" class="btn btn-primary" logged-in-only ng-hide="isOwner">
+      <div class="col-xs-12 col-ms-7 col-md-6 form-group clearfix pull-right">
+        <a ui-sref="conversation.new({to: book.username, book: book.id})" class="btn btn-primary ms-pull-left" logged-in-only ng-hide="isOwner">
           Request this book
         </a>
 
         <div ng-show="isOwner">
-          <a ui-sref="book.update({id: book.id})" class="btn btn-primary">
-            Edit
-          </a>
-          <a ui-sref="book.destroy({id: book.id})" class="btn btn-success">
+          <a ui-sref="book.destroy({id: book.id})" class="btn btn-success xs-pull-left ms-pull-left">
             Remove
+          </a>
+
+          <a ui-sref="book.update({id: book.id})" class="btn btn-primary ms-pull-left">
+            Edit
           </a>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<error errors="errors"></error>

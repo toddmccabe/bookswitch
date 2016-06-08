@@ -1,4 +1,9 @@
-bookSwitchApp.controller('BookShowController', function($scope, $stateParams, Book, SiteData) {
+angular.module('bookSwitchApp').controller('BookShowController', function(
+  $scope,
+  $stateParams,
+  Book,
+  SiteData
+) {
   $scope.added = $stateParams.added;
   $scope.updated = $stateParams.updated;
 

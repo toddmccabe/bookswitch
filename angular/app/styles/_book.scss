@@ -1,9 +1,11 @@
 .book-image {
-  margin-top: 5px;
+  margin-bottom: 15px;
 }
 
+/* used if book has no cover photo */
 .book-icon {
   color: $brand-success;
+  font-size: 200px;
 }
 
 .book-attributes {
@@ -12,30 +14,16 @@
   }
 }
 
-.book {
-  .book-image {
-    height: 210px;
-  }
-
-  .book-icon {
-    font-size: 150px;
-  }
-}
-
 .book-preview {
-  margin-bottom: 30px;
-
-  .book-image {
-    height: 100px;
-  }
-
-  .book-icon {
-    font-size: 116px;
-  }
+  margin-bottom: $grid-gutter-width;
 
   .book-attributes {
     > div {
-      padding-bottom: 2px;
+      padding-bottom: 3px;
+
+      &:last-of-type {
+        padding-bottom: 0;
+      }
     }
   }
 }

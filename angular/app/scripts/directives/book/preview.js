@@ -1,4 +1,4 @@
-bookSwitchApp.directive('bookPreview', function() {
+angular.module('bookSwitchApp').directive('bookPreview', function() {
   return {
     scope: {
       book: '='

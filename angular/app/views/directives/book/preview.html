@@ -1,49 +1,59 @@
-<div class="book-preview row" ng-show="book">
-  <div class="col-md-5 text-right">
-    <div ng-include="'views/book/image.html'"></div>
-  </div>
+<div class="col-xs-12 col-ms-5 col-md-5 col-md-offset-1 col-lg-4 col-lg-offset-2 text-right" ng-show="book">
+  <div ng-include="'views/book/image.html'"></div>
+</div>
 
-  <div class="col-md-7">
-    <div class="book-attributes">
-      <div>
-        <strong>
-          Title:
-        </strong>
+<div class="col-ms-7 col-md-6 col-lg-4" ng-show="book">
+  <div class="book-attributes">
+    <div>
+      <strong>
+        Title:
+      </strong>
 
-        <a ui-sref="book.show({id: book.id})">
-          {{book.title}}
-        </a>
-      </div>
-      <div>
-        <strong>
-          Author:
-        </strong>
+      {{book.title}}
+    </div>
+    <div>
+      <strong>
+        Author:
+      </strong>
 
-        {{book.author}}
-      </div>
-      <div ng-show="book.isbn10">
-        <strong>
-          ISBN:
-        </strong>
+      {{book.author}}
+    </div>
+    <div ng-show="book.isbn10">
+      <strong>
+        ISBN:
+      </strong>
 
-        {{book.isbn10}}
-      </div>
-      <div>
-        <strong>
-          Price:
-        </strong>
+      {{book.isbn10}}
+    </div>
+    <div ng-show="book.isbn13">
+      <strong>
+        ISBN13:
+      </strong>
 
-        {{book.price | currency}}
-      </div>
-      <div>
-        <strong>
-          User:
-        </strong>
+      {{book.isbn13}}
+    </div>
+    <div ng-show="book.upc">
+      <strong>
+        UPC:
+      </strong>
 
-        <a ui-sref="user.show({username: book.username})">
-          {{book.username}}
-        </a>
-      </div>
+      {{book.upc}}
+    </div>
+    <div>
+      <strong>
+        Price:
+      </strong>
+
+      {{book.price | currency}}
+    </div>
+    <div>
+      <strong>
+        User:
+      </strong>
+
+      <a ui-sref="user.show({username: book.username})">
+        {{book.username}}
+      </a>
     </div>
   </div>
 </div>

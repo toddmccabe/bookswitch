@@ -1,0 +1,19 @@
+<div class="clearfix">
+  <ul class="pagination" ng-show="totalPages > 1">
+    <li class="previous" ng-class="{'invisible': (page == undefined || page == 1)}">
+      <a href="" ng-click="changePage(-1)">
+        <i class="fa fa-2 fa-arrow-left"></i>
+      </a>
+    </li>
+
+    <li class="next pull-right" ng-class="{'invisible': page == totalPages}">
+      <a href="" ng-click="changePage(1)">
+        <i class="fa fa-2 fa-arrow-right"></i>
+      </a>
+    </li>
+
+    <li class="pagination-current-page text-center">
+      Page {{page || '1'}}
+    </li>
+  </ul>
+</div>

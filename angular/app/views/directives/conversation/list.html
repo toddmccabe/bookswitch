@@ -1,46 +1,36 @@
-<h3>Messages</h3>
+<div ng-show="conversationTotalCount > 0 && isUser">
+  <h3>Messages</h3>
 
-<div ng-show="conversationCount == 0">
-  You have no messages.
-</div>
+  <div class="item-list">
+    <div class="item-list-header row">
+      <div class="col-xs-12">
+        User
+      </div>
+    </div>
 
-<div class="item-list" ng-show="conversationCount > 0">
-  <div class="item-list-header row">
-    <div class="col-sm-2">
-      User
+    <div
+      class="item-list-item row"
+      ng-repeat="conversation in conversations"
+      ng-class="{bold: !conversation.most_recent_message.read && conversation.most_recent_message.sender_username != username}">
+
+      <a ui-sref="conversation.update({id: conversation.id})">
+        <div class="col-xs-3 col-md-2">
+          {{conversation.usernames.remove(username)[0]}}
+        </div>
+        <div class="col-xs-9 overflow-ellipsis">
+          {{conversation.most_recent_message.body}}
+        </div>
+      </a>
     </div>
   </div>
 
-  <div class="item-list-item row" ng-repeat="conversation in conversations" ng-class="{bold: !conversation.most_recent_message.read && conversation.most_recent_message.sender_username != username}">
-    <a ui-sref="conversation.update({id: conversation.id})">
-      <div class="col-sm-2">
-        {{conversation.usernames.remove(username)[0]}}
-      </div>
-      <div class="col-sm-10 overflow-ellipsis">
-        {{conversation.most_recent_message.body}}
-      </div>
-    </a>
-  </div>
+  <pagination
+    results="conversations"
+    results-total-count="conversationTotalCount"
+    page="page">
+  </pagination>
 
-  <div class="text-center" ng-show="conversationCount > conversations.length">
-    <ul class="pagination">
-      <li ng-class="{'disabled': page == 1}">
-        <a href="" ng-click="changePage(-1)">
-          Previous
-        </a>
-      </li>
-
-      <li ng-repeat="i in totalPages.toArray() track by $index" ng-class="{'active': (page == $index + 1 || !page && $index == 0)}">
-        <a href="" ng-click="setPage($index + 1)">
-          {{$index + 1}}
-        </a>
-      </li>
-
-      <li ng-class="{'disabled': page == totalPages}">
-        <a href="" class="item-list-pagination-next" ng-click="changePage(1)">
-          Next
-        </a>
-      </li>
-    </ul>
+  <div ng-show="conversationTotalCount == 0" class="br-15px">
+    You have no messages.
   </div>
 </div>

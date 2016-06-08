@@ -3,7 +3,6 @@ class User
   include ActiveModel::Validations
 
   key :email,             String
-  # todo: add length limit
   key :username,          String,   :required => true
   key :password,          String,   :required => true
   key :token,             String,   :unique => true

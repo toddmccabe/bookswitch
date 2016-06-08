@@ -1,9 +1,15 @@
-bookSwitchApp.factory('BarcodeScanner', function($q, BrowserSupport, appConfig) {
+angular.module('bookSwitchApp').factory('BarcodeScanner', function(
+  $q,
+  BrowserSupport,
+  appConfig
+) {
   var preview;
+  var previewDistanceGuide;
 
   return {
     isRunning: false,
     scopeID: null,
+    config: {},
 
     // returns QuaggaJS config object based on browser support
     getConfig: function() {
@@ -26,6 +32,7 @@ bookSwitchApp.factory('BarcodeScanner', function($q, BrowserSupport, appConfig) 
           _this = this;
 
       preview = config.scanPreview;
+      previewDistanceGuide = config.scanPreviewDistanceGuide;
       _this.scopeID = config.scopeID;
 
       // merge parameters into config
@@ -42,10 +49,21 @@ bookSwitchApp.factory('BarcodeScanner', function($q, BrowserSupport, appConfig) 
         console.log("Initialization finished. Ready to start");
         Quagga.start();
         _this.isRunning = true;
+
+        // resize distance guide to match camera preview
+        previewDistanceGuide.height($(preview).find('canvas').height());
+        previewDistanceGuide.width($(preview).find('canvas').width());
+
+        // display distance guide
+        previewDistanceGuide.show();
       });
 
       Quagga.onDetected(function(data) {
         _this.stop();
+
+        // remove leading 0 to fix UPC format
+        data.codeResult.code = data.codeResult.code.replace(/^0/, '');
+
         deferred.resolve(data);
       });
 
@@ -69,6 +87,10 @@ bookSwitchApp.factory('BarcodeScanner', function($q, BrowserSupport, appConfig) 
 
     stop: function() {
       Quagga.stop();
+
+      // hide distance guide
+      previewDistanceGuide.hide();
+
       // remove canvas/video elements as Quagga does not do this by default
       $(preview).empty();
 

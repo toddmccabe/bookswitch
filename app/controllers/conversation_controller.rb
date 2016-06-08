@@ -85,13 +85,14 @@ class ConversationController < ApplicationController
     end
 
     # ensure user is present in conversation.users
+    # todo: fix this
     @conversation.authenticate(user)
 
     # mark the conversation messages as read for user
     @conversation.mark_messages_as_read!(user)
 
     # show messages from newest -> oldest
-    @conversation.messages.reverse!
+    @conversation.messages.sort_by!(&:created_at).reverse!
 
     render
   end

@@ -1,4 +1,4 @@
-bookSwitchApp.directive('focusIfEvent', function() {
+angular.module('bookSwitchApp').directive('focusIfEvent', function() {
   return {
     scope: {
       event: '@focusIfEvent'

@@ -36,6 +36,11 @@ class Message
     User.find(recipient_id)
   end
 
+  # format mongomapper timestamps for angular date compatibility
+  def created_at_formatted
+    return created_at.strftime('%FT%T%:z')
+  end
+
   private
 
   def associate_with_recipient!

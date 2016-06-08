@@ -1,4 +1,6 @@
-bookSwitchApp.directive('error', function(Error) {
+angular.module('bookSwitchApp').directive('error', function(
+  Error
+) {
   return {
     scope: {
       errors: '='

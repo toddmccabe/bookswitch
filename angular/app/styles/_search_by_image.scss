@@ -1,4 +1,6 @@
 .search-by-image {
+  position: relative;
+
   .search-by-image-preview {
     position: relative;
     height: 0;
@@ -7,13 +9,68 @@
     canvas {
       height: 200px;
       position: absolute;
-      right: -2px;
-      top: 4px;
+      right: 0;
+      top: 0;
       z-index: 10;
+      border-radius: 18px;
     }
   }
 
-  // http://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
+  .search-by-image-preview-distance-guide {
+    display: none;
+    position: absolute;
+    z-index: 11;
+    right: 0;
+    animation-name: fade;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+
+    div {
+      $radius-size: 18px;
+      $vertical-shrink: 30%;
+      $horizontal-shrink: 25%;
+
+      position: absolute;
+      height: $radius-size;
+      width: $radius-size;
+      border: 3px solid red;
+
+
+      &:nth-child(1) {
+        top: $vertical-shrink;
+        left: $horizontal-shrink;
+        border-right: 0;
+        border-bottom: 0;
+        border-top-left-radius: $radius-size;
+      }
+
+      &:nth-child(2) {
+        top: $vertical-shrink;
+        right: $horizontal-shrink;
+        border-bottom: 0;
+        border-left: 0;
+        border-top-right-radius: $radius-size;
+      }
+
+      &:nth-child(3) {
+        bottom: $vertical-shrink;
+        right: $horizontal-shrink;
+        border-left: 0;
+        border-top: 0;
+        border-bottom-right-radius: $radius-size;
+      }
+
+      &:nth-child(4) {
+        bottom: $vertical-shrink;
+        left: $horizontal-shrink;
+        border-right: 0;
+        border-top: 0;
+        border-bottom-left-radius: $radius-size;
+      }
+    }
+  }
+
+  /* http://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/ */
   input[type="file"] {
     width: 0.1px;
     height: 0.1px;
@@ -24,14 +81,14 @@
   }
 }
 
-// link is for streaming barcode scan
+/* link is for streaming barcode scan */
 a.search-by-image-link {
   .get-user-media-not-supported & {
     display: none;
   }
 }
 
-// label is for file-upload barcode scan
+/* label is for file-upload barcode scan */
 label.search-by-image-link {
   color: $link-color;
   margin-bottom: 0;

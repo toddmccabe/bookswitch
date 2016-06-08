@@ -1,4 +1,10 @@
-bookSwitchApp.controller('ApplicationController', function($scope, $state, SiteData, Session, BrowserSupport) {
+angular.module('bookSwitchApp').controller('ApplicationController', function(
+  $scope,
+  $state,
+  SiteData,
+  Session,
+  BrowserSupport
+) {
   // automatically update scope username from SiteData factory
   $scope.$watch(function() {
     return SiteData.get('username');

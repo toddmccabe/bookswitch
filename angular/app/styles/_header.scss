@@ -1,23 +1,19 @@
 header {
-  padding: 40px 0 10px;
-  @include clearfix();
+  padding: 12px 0 $grid-gutter-width 0;
+  @include clearfix;
 
   .logo {
-    margin-right: 40px;
-    vertical-align: top;
-
-    &:hover {
-      text-decoration: none;
+    @include breakpoint(xs) {
+      margin-bottom: $grid-gutter-width;
+      width: 100%;
+    }
+    @include breakpoint(ms) {
+      height: 36px;
     }
   }
 
-  .header-search,
   .header-buttons {
-    margin-top: 20px;
-  }
-
-  form {
-    width: 300px;
+    margin-top: $grid-gutter-width;
   }
 
   [search-by-image] {

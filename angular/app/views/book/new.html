@@ -1,11 +1,9 @@
-<error errors="errors"></error>
-
 <form class="form-horizontal" autocomplete="off">
   <div class="form-group">
-    <label for="isbn10" class="control-label col-md-4">
+    <label for="isbn10" class="control-label col-sm-4">
       ISBN
     </label>
-    <div class="col-md-4">
+    <div class="col-sm-5">
       <div class="input-group">
         <input type="text" class="form-control" id="isbn10" ng-model="book.isbn10" />
         <span class="input-group-addon">
@@ -15,35 +13,47 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="title" class="control-label col-md-4">
+    <label for="title" class="control-label col-sm-4">
       Title
     </label>
-    <div class="col-md-4">
+    <div class="col-sm-5">
       <input type="text" class="form-control" id="title" ng-model="book.title" />
     </div>
   </div>
   <div class="form-group">
-    <label for="author" class="control-label col-md-4">
+    <label for="author" class="control-label col-sm-4">
       Author
     </label>
-    <div class="col-md-4">
+    <div class="col-sm-5">
       <input type="text" class="form-control" id="author" ng-model="book.author" />
     </div>
   </div>
   <div class="form-group">
-    <label for="price" class="control-label col-md-4">
+    <label for="price" class="control-label col-sm-4">
       Price
     </label>
-    <div class="col-md-2">
+    <div class="col-sm-2">
       <div class="input-group">
         <div class="input-group-addon">$</div>
         <input type="text" class="form-control" id="price" ng-model="book.price" focus-if-event="barcodeLookupSuccess" />
       </div>
     </div>
   </div>
+
+  <div class="row">
+    <error
+      errors="errors"
+      class="col-sm-offset-4 col-sm-5">
+    </error>
+  </div>
+
   <div class="form-group">
-    <div class="col-md-offset-4 col-md-4">
-      <button type="submit" class="btn btn-primary" ng-click="create()">
+    <div class="col-sm-offset-4 col-sm-5">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        ng-click="create()"
+        logged-in-only>
         Add book
       </button>
     </div>

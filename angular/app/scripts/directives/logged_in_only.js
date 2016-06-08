@@ -1,4 +1,7 @@
-angular.module('bookSwitchApp').directive('loggedInOnly', function($state, SiteData) {
+angular.module('bookSwitchApp').directive('loggedInOnly', function(
+  $state,
+  SiteData
+) {
   return {
     restrict: 'A',
     link: function($scope, $element) {

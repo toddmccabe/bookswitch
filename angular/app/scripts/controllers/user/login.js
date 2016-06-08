@@ -1,4 +1,11 @@
-bookSwitchApp.controller('UserLoginController', function($scope, $state, $stateParams, $location, Session, SiteData) {
+angular.module('bookSwitchApp').controller('UserLoginController', function(
+  $scope,
+  $state,
+  $stateParams,
+  $location,
+  Session,
+  SiteData
+) {
   var session = new Session();
 
   $scope.rememberMe = false;
@@ -26,7 +33,6 @@ bookSwitchApp.controller('UserLoginController', function($scope, $state, $stateP
     SiteData.set('username', response.username);
 
     if($scope.afterURL) {
-      // todo: find out why $stateParams.afterURL is encoded twice
       location.href = decodeURIComponent(decodeURIComponent($scope.afterURL));
     } else {
       $state.go('user.show', {

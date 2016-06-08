@@ -1,4 +1,7 @@
-bookSwitchApp.controller('UserNewController', function($scope, User) {
+angular.module('bookSwitchApp').controller('UserNewController', function(
+  $scope,
+  User
+) {
   $scope.user = new User();
   $scope.created = false;
 

@@ -1,4 +1,7 @@
-bookSwitchApp.directive('searchByImage', function(BarcodeScanner, BrowserSupport) {
+angular.module('bookSwitchApp').directive('searchByImage', function(
+  BarcodeScanner,
+  BrowserSupport
+) {
   return {
     scope: {
       target: '='
@@ -8,6 +11,7 @@ bookSwitchApp.directive('searchByImage', function(BarcodeScanner, BrowserSupport
       var scanButton = $($element).find('a .search-by-image-icon');
       var fileInput = $($element).find('input[type=file]');
       var scanPreview = $($element).find('.search-by-image-preview')[0];
+      var scanPreviewDistanceGuide = $(scanPreview).siblings('.search-by-image-preview-distance-guide');
 
       // open/close live camera capture for barcode scan
       var toggleSearchByImage = function() {
@@ -25,6 +29,7 @@ bookSwitchApp.directive('searchByImage', function(BarcodeScanner, BrowserSupport
         var scan = BarcodeScanner.scanFromStream({
           scanButton: scanButton,
           scanPreview: scanPreview,
+          scanPreviewDistanceGuide: scanPreviewDistanceGuide,
           scopeID: $scope.$id,
           inputStream: {
             target: scanPreview

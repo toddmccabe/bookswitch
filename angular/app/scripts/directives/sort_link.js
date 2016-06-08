@@ -1,4 +1,4 @@
-bookSwitchApp.directive('sortLink', function() {
+angular.module('bookSwitchApp').directive('sortLink', function() {
   return {
     scope: {
       label: '@',

@@ -1,4 +1,10 @@
-bookSwitchApp.controller('BookUpdateController', function($scope, $state, $stateParams, Book, SiteData) {
+angular.module('bookSwitchApp').controller('BookUpdateController', function(
+  $scope,
+  $state,
+  $stateParams,
+  Book,
+  SiteData
+) {
   $scope.book = new Book();
 
   $scope.book.$get({id: $stateParams.id});

@@ -1,0 +1,20 @@
+.pagination {
+  @include clearfix;
+  display: block;
+  margin-top: 0;
+  margin-bottom: $grid-gutter-width;
+
+  .previous,
+  .next {
+    a {
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+  }
+
+  .pagination-current-page {
+    display: block;
+    font-weight: bold;
+    padding-top: 6px;
+  }
+}

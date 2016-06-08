@@ -1,4 +1,12 @@
-bookSwitchApp.controller('ConversationUpdateController', function($scope, $state, $stateParams, Conversation, Book, User, SiteData) {
+angular.module('bookSwitchApp').controller('ConversationUpdateController', function(
+  $scope,
+  $state,
+  $stateParams,
+  Conversation,
+  Book,
+  User,
+  SiteData
+) {
   $scope.sent = $stateParams.sent;
   $scope.conversation = new Conversation();
   $scope.userInactive = false;

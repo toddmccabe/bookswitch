@@ -1,4 +1,4 @@
-bookSwitchApp.factory('Error', function() {
+angular.module('bookSwitchApp').factory('Error', function() {
   return {
     parse: function(errors) {
       var parsedErrors = [];

@@ -48,7 +48,7 @@ class Conversation
   # if the user isn't part of the conversation, return error
   def authenticate(user)
     if !users.include?(user)
-      # todo: don't render from a model. refactor this
+      # todo: don't render from a model. fix this
       render json: {errors: 'Unable to access conversation. Please make sure you are logged in.'}
     end
   end
@@ -72,6 +72,8 @@ class Conversation
     message = messages.last
     book = message.conversation.books.last
 
-    UserMailer.new_message(message.recipient, message, book).deliver_now unless !message.recipient.active
+    if message.recipient.active
+      UserMailer.new_message(message.recipient, message, book).deliver_now
+    end
   end
 end
