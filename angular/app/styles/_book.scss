@@ -22,4 +22,11 @@
       }
     }
   }
+
+}
+
+// fix for underlapping issue
+.book-image {
+  position: relative;
+  z-index: 1;
 }

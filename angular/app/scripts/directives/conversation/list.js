@@ -11,7 +11,8 @@ angular.module('bookSwitchApp').directive('conversationList', function(
     templateUrl: 'views/directives/conversation/list.html',
     link: function($scope) {
       $scope.username = SiteData.get('username');
-      $scope.isUser = $scope.username == $stateParams.username;
+      $scope.isUser = $scope.username === $stateParams.username;
+      $scope.firstQueryCompleted = false;
 
       $scope.getConversations = function() {
         Conversation.query({
@@ -21,8 +22,16 @@ angular.module('bookSwitchApp').directive('conversationList', function(
         }, function(response) {
           $scope.conversations = response.conversations;
           $scope.conversationTotalCount = response.total_count;
+          $scope.scrollToTop();
+          $scope.firstQueryCompleted = true;
         });
       };
+
+      $scope.scrollToTop = function() {
+        if($scope.firstQueryCompleted) {
+          window.scrollTo(0, 0);
+        }
+      }
 
       // this calls $scope.getConversations on initialization and pagination
       $scope.$watch('page', function() {
