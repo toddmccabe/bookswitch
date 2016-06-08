@@ -14,7 +14,13 @@ code :book do |response|
       :isbn10 => book.ItemAttributes.ISBN,
       :isbn13 => StdNum::ISBN.convert_to_13(book.ItemAttributes.ISBN),
       :upc => book.ItemAttributes.UPC,
-      :link => book.DetailPageURL
+      :amazon => {
+        :link => book.DetailPageURL,
+        :price => {
+          :new => book.OfferSummary.LowestNewPrice.FormattedPrice,
+          :used => book.OfferSummary.LowestUsedPrice.FormattedPrice
+        }
+      }
     }
   end
 end

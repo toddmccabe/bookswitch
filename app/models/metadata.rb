@@ -26,8 +26,8 @@ class Metadata
           'SearchIndex' => 'Books',
           'IdType' => lookup_format,
           'ItemId' => lookup_value,
-          # request book metadata as well as cover images
-          'ResponseGroup' => 'ItemAttributes, Images'
+          # request book metadata, cover images as well as prices
+          'ResponseGroup' => 'ItemAttributes, Images, Offers'
         }
       ).parse
     rescue Excon::Errors::BadRequest => e

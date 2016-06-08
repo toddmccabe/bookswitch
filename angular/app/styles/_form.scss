@@ -41,3 +41,12 @@ textarea {
     margin-left: 18px;
   }
 }
+
+.form-horizontal,
+.form {
+  .control-text {
+    @extend .control-label;
+    font-weight: normal;
+    text-align: left;
+  }
+}

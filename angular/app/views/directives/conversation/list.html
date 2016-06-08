@@ -14,10 +14,10 @@
       ng-class="{bold: !conversation.most_recent_message.read && conversation.most_recent_message.sender_username != username}">
 
       <a ui-sref="conversation.update({id: conversation.id})">
-        <div class="col-xs-3 col-md-2">
+        <div class="col-xs-4 col-ms-3 col-md-2 overflow-ellipsis">
           {{conversation.usernames.remove(username)[0]}}
         </div>
-        <div class="col-xs-9 overflow-ellipsis">
+        <div class="col-xs-8 col-ms-9 col-md-10 overflow-ellipsis">
           {{conversation.most_recent_message.body}}
         </div>
       </a>
