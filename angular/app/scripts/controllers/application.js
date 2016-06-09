@@ -22,9 +22,8 @@ angular.module('bookSwitchApp').controller('ApplicationController', function(
         // valid session. do nothing
       }, function() {
         // invalid session. user may have logged off from another browser
-        // remove all site data and redirect to login
+        // remove all site data
         SiteData.removeAll();
-        $state.go('user.login');
       });
     }
   });

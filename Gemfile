@@ -9,14 +9,5 @@ gem 'vacuum', '~> 1.4'
 gem 'rabl'
 gem 'library_stdnums'
 gem 'mime-types', '2.6.2'
-gem 'thin'
+gem 'unicorn'
 gem 'compass'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano', :group => :development
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'

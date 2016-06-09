@@ -20,15 +20,14 @@ Gemfile.lock
 /angular/.jshintrc
 /angular/.travis.yml
 /angular/.yo-rc.json
+/angular/.sass-cache
+/angular/.tmp
+/angular/bower_components
+/angular/node_modules
 /bin
 /config/initializers/secret_token.rb
 /config/initializers/amazon.rb
 /config/secrets.yml
 /db
 /public
-
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
-
+/shared

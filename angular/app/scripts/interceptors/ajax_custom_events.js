@@ -29,6 +29,7 @@ angular.module('bookSwitchApp').factory('AjaxCustomsEventInterceptor', function(
   };
 });
 
+// add to httpProvider interceptor stack
 angular.module('bookSwitchApp').config(function(
   $httpProvider
 ) {
