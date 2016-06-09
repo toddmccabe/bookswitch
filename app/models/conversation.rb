@@ -73,7 +73,7 @@ class Conversation
     book = message.conversation.books.last
 
     if message.recipient.active
-      UserMailer.new_message(message.recipient, message, book).deliver_now
+      UserMailer.new_message(message.recipient, message, book)
     end
   end
 end

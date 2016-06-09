@@ -8,6 +8,9 @@ gem 'bson_ext'
 gem 'vacuum', '~> 1.4'
 gem 'rabl'
 gem 'library_stdnums'
+gem 'mime-types', '2.6.2'
+gem 'thin'
+gem 'compass'
 
 # Use unicorn as the app server
 # gem 'unicorn'

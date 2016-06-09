@@ -7,7 +7,7 @@ angular.module('bookSwitchApp').directive('bookList', function(
 ) {
   return {
     scope: {
-      booksTotalCount: '='
+      booksTotalCount: '=?'
     },
     templateUrl: 'views/directives/book/list.html',
     link: function($scope) {

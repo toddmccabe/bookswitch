@@ -25,6 +25,7 @@ Gemfile.lock
 /config/initializers/amazon.rb
 /config/secrets.yml
 /db
+/public
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
