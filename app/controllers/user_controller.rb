@@ -3,7 +3,7 @@ class UserController < ApplicationController
     user = User.new(private_params(User))
 
     if user.save
-      UserMailer.confirmation(user)
+      UserMailer.confirmation(user).deliver_now!
     else
       render json: {errors: user.errors}, status: 418
     end

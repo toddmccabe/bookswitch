@@ -20,9 +20,7 @@ class Conversation
   # this is used as a conversation preview
   # include only relevant properties
   def most_recent_message
-    #
     # todo: find non-as_json way to including the results of methods
-    #
     messages.last.as_json(only: [:created_at, :body, :read], methods: :sender_username)
   end
 
@@ -73,7 +71,7 @@ class Conversation
     book = message.conversation.books.last
 
     if message.recipient.active
-      UserMailer.new_message(message.recipient, message, book)
+      UserMailer.new_message(message.recipient, message, book).deliver_now!
     end
   end
 end

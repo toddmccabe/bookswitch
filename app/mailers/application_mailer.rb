@@ -1,3 +1,3 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'mailman@bookswitch.org'
+  default from: 'mailbot@bookswit.ch'
 end

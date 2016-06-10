@@ -31,3 +31,6 @@ Gemfile.lock
 /db
 /public
 /shared
+/bookswitch.sublime-project
+/bookswitch.sublime-workspace
+
