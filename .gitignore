@@ -27,6 +27,7 @@ Gemfile.lock
 /bin
 /config/initializers/secret_token.rb
 /config/initializers/amazon.rb
+/config/initializers/smtp.rb
 /config/secrets.yml
 /db
 /public
