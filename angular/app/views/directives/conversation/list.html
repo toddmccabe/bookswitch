@@ -1,8 +1,8 @@
-<div ng-show="conversationTotalCount > 0 && isUser">
+<div ng-show="isUser">
   <a name="messages"></a>
   <h3>Messages</h3>
 
-  <div class="item-list">
+  <div class="item-list" ng-show="conversationTotalCount > 0">
     <div class="item-list-header row">
       <div class="col-xs-12">
         User
