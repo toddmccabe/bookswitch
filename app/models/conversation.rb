@@ -69,9 +69,15 @@ class Conversation
   def notify_recipient
     message = messages.last
     book = message.conversation.books.last
+    book_title = book ? book.title : nil
 
     if message.recipient.active
-      UserMailer.new_message(message.recipient, message, book).deliver_now!
+      UserMailer.new_message(
+        message.recipient.email,
+        message.body,
+        book_title,
+        message.conversation.id.to_s
+      ).deliver_later
     end
   end
 end

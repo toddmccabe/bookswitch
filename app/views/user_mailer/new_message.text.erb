@@ -1,8 +1,7 @@
-<% if @book %>
-Book: <%= @book.title %>
+<% if @book_title %>
+Book: <%= @book_title %>
 <% end %>
-Message: <%= @message.body %>
+Message: <%= @message_body %>
 
 Please use the link below to reply.
-https://bookswit.ch/#/conversation/update/<%= @message.conversation.id %>
-
+https://bookswit.ch/#/conversation/update/<%= @conversation_id %>

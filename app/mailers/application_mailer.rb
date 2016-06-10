@@ -1,3 +1,3 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'mailbot@bookswit.ch'
+  default from: 'hello@bookswit.ch'
 end

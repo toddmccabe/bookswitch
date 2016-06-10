@@ -1,15 +1,15 @@
 class UserMailer < ApplicationMailer
-  def confirmation(user)
-    @user = user
+  def confirmation(to, token)
+    @token = token
     
-    mail(to: @user.email, subject: 'Please confirm your account')
+    mail(to: to, subject: 'Please confirm your account')
   end
 
-  def new_message(user, message, book)
-    @user = user
-    @message = message
-    @book = book
+  def new_message(to, message_body, book_title, conversation_id)
+    @message_body = message_body
+    @book_title = book_title
+    @conversation_id = conversation_id
 
-    mail(to: @user.email, subject: 'You have a new message')
+    mail(to: to, subject: 'You have a new message')
   end
 end
