@@ -46,16 +46,33 @@
 .xs-pull-left {
   @include breakpoint(xs) {
     float: left;
-    margin-left: 0;
-    margin-right: 4px;
+
+    &.btn {
+      margin-left: 0;
+      margin-right: 4px;
+    }
   }
 }
 
 .ms-pull-left {
   @include breakpoint(ms) {
     float: left;
-    margin-left: 0;
-    margin-right: 4px;
+
+    &.btn {
+      margin-left: 0;
+      margin-right: 4px;
+    }
+  }
+}
+
+.md-pull-right {
+  @include breakpoint(md) {
+    float: right;
+
+    &.btn {
+      margin-left: 4px;
+      margin-right: 0;
+    }
   }
 }
 
@@ -73,6 +90,12 @@
     text-align: right;
   }
   @include breakpoint(sm) {
+    text-align: left;
+  }
+}
+
+.md-text-left {
+  @include breakpoint(md) {
     text-align: left;
   }
 }

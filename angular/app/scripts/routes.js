@@ -36,12 +36,14 @@ angular.module('bookSwitchApp').config(function(
     .state('book.update', {
       url: '/book/update/:id',
       controller: 'BookUpdateController',
-      templateUrl: 'views/book/update.html'
+      templateUrl: 'views/book/update.html',
+      loginRequired: true
     })
     .state('book.destroy', {
       url: '/book/destroy/:id?removed',
       controller: 'BookDestroyController',
-      templateUrl: 'views/book/destroy.html'
+      templateUrl: 'views/book/destroy.html',
+      loginRequired: true
     })
     .state('user', {
       parent: 'application',
@@ -65,7 +67,8 @@ angular.module('bookSwitchApp').config(function(
     .state('user.logout', {
       url: '/user/logout?deactivated',
       controller: 'UserLogoutController',
-      templateUrl: 'views/user/logout.html'
+      templateUrl: 'views/user/logout.html',
+      loginRequired: true
     })
     .state('user.show', {
       url: '/user/:username?updated&page&sort&direction',
@@ -75,12 +78,14 @@ angular.module('bookSwitchApp').config(function(
     .state('user.update', {
       url: '/user/update/:username',
       controller: 'UserUpdateController',
-      templateUrl: 'views/user/update.html'
+      templateUrl: 'views/user/update.html',
+      loginRequired: true
     })
     .state('user.deactivate', {
       url: '/user/deactivate/:username',
       controller: 'UserDeactivateController',
-      templateUrl: 'views/user/deactivate.html'
+      templateUrl: 'views/user/deactivate.html',
+      loginRequired: true
     })
     .state('conversation', {
       parent: 'application',
@@ -89,11 +94,13 @@ angular.module('bookSwitchApp').config(function(
     .state('conversation.new', {
       url: '/conversation/new/?to&book',
       controller: 'ConversationNewController',
-      templateUrl: 'views/conversation/new.html'
+      templateUrl: 'views/conversation/new.html',
+      loginRequired: true
     })
     .state('conversation.update', {
       url: '/conversation/update/:id?sent',
       controller: 'ConversationUpdateController',
-      templateUrl: 'views/conversation/update.html'
+      templateUrl: 'views/conversation/update.html',
+      loginRequired: true
     });
 });

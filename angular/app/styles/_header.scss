@@ -10,6 +10,9 @@ header {
     @include breakpoint(ms) {
       height: 36px;
     }
+    @include breakpoint(md) {
+      height: 87px;
+    }
   }
 
   .header-buttons {

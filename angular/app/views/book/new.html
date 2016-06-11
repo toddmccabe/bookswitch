@@ -1,9 +1,9 @@
 <form class="form-horizontal" autocomplete="off">
   <div class="form-group">
-    <label for="isbn10" class="control-label col-sm-3">
+    <label for="isbn10" class="control-label col-sm-4">
       ISBN
     </label>
-    <div class="col-sm-7">
+    <div class="col-sm-5">
       <div class="input-group">
         <input type="text" class="form-control" id="isbn10" ng-model="book.isbn10" />
         <span class="input-group-addon">
@@ -13,23 +13,23 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="title" class="control-label col-sm-3">
+    <label for="title" class="control-label col-sm-4">
       Title
     </label>
-    <div class="col-sm-7">
+    <div class="col-sm-5">
       <input type="text" class="form-control" id="title" ng-model="book.title" />
     </div>
   </div>
   <div class="form-group">
-    <label for="author" class="control-label col-sm-3">
+    <label for="author" class="control-label col-sm-4">
       Author
     </label>
-    <div class="col-sm-7">
+    <div class="col-sm-5">
       <input type="text" class="form-control" id="author" ng-model="book.author" />
     </div>
   </div>
   <div class="form-group">
-    <label for="price" class="control-label col-sm-3">
+    <label for="price" class="control-label col-sm-4">
       Price
     </label>
     <div class="col-sm-2">
@@ -40,10 +40,10 @@
     </div>
   </div>
   <div class="form-group" ng-show="book.amazon.price.new || book.amazon.price.used">
-    <label class="control-label col-sm-3">
+    <label class="control-label col-sm-4">
       Online Prices
     </label>
-    <label class="control-text col-sm-7">
+    <label class="control-text col-sm-5">
       <a href="{{book.amazon.link}}" target="_blank">
         <i class="fa fa-amazon amazon-color"></i>&nbsp;
         
@@ -68,12 +68,12 @@
   <div class="row">
     <error
       errors="errors"
-      class="col-sm-offset-3 col-sm-7">
+      class="col-sm-offset-4 col-sm-5">
     </error>
   </div>
 
   <div class="form-group">
-    <div class="col-sm-offset-3 col-sm-7">
+    <div class="col-sm-offset-4 col-sm-5">
       <button
         type="submit"
         class="btn btn-primary"
