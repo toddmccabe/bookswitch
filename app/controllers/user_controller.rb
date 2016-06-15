@@ -52,4 +52,17 @@ class UserController < ApplicationController
       head 401
     end
   end
+
+  def notifications
+    user = User.find_from_token(params)
+
+    if !user
+      head 418
+      return
+    end
+
+    render json: {
+      unread_conversations: user.unread_conversations.count
+    }
+  end
 end

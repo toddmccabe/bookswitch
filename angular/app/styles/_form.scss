@@ -3,7 +3,8 @@ label {
 }
 
 /* align all buttons to the right as most people are right-handed */
-.btn {
+.btn,
+.btn-group {
   float: right;
   margin-left: 4px;
 

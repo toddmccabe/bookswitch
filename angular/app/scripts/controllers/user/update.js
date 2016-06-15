@@ -1,23 +1,24 @@
 angular.module('bookSwitchApp').controller('UserUpdateController', function(
   $scope,
   $state,
-  $stateParams,
   User,
   SiteData
 ) {
+  var username = SiteData.get('username');
+  var token = SiteData.get('token');
   var user = new User();
 
   user.$get({
-    username: $stateParams.username,
-    token: SiteData.get('token')
+    username: username,
+    token: token
   }, function(user) {
     $scope.user = user;
   });
 
   $scope.update = function() {
     user.$update({
-      username: $stateParams.username,
-      token: SiteData.get('token')
+      username: username,
+      token: token
     }, function(response) {
       SiteData.set('username', response.username);
 

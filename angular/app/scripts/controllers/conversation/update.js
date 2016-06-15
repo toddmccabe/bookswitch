@@ -11,11 +11,13 @@ angular.module('bookSwitchApp').controller('ConversationUpdateController', funct
   $scope.conversation = new Conversation();
   $scope.userInactive = false;
   $scope.bookUnavailable = false;
+  $scope.username = SiteData.get('username');
+  $scope.token = SiteData.get('token');
 
   $scope.conversation.$get({
     id: $stateParams.id,
-    username: SiteData.get('username'),
-    token: SiteData.get('token')
+    username: $scope.username,
+    token: $scope.token
   }, function(response) {
     if(response.book.id) {
       Book.get({id: response.book.id}, function(response) {
@@ -27,7 +29,7 @@ angular.module('bookSwitchApp').controller('ConversationUpdateController', funct
 
     // check to see if the other user has deactivated their account
     User.get({
-      username: response.usernames.remove(SiteData.get('username'))[0]
+      username: response.usernames.remove($scope.username)[0]
     }, function() {
       // active account
     }, function() {
@@ -41,8 +43,8 @@ angular.module('bookSwitchApp').controller('ConversationUpdateController', funct
   $scope.update = function() {
     $scope.conversation.$update({
       id: $scope.conversation.id,
-      username: SiteData.get('username'),
-      token: SiteData.get('token')
+      username: $scope.username,
+      token: $scope.token
     }, function(response) {
       $state.go('conversation.update', {
         id: response.id,

@@ -17,14 +17,39 @@
 
     <div class="header-buttons col-xs-12 col-md-6 clearfix">
       <a ui-sref="user.login" class="btn btn-primary" ng-hide="username">
-        <i class="fa fa-rocket"></i>&nbsp;
         Log in
       </a>
 
-      <a ui-sref="user.show({username: username})" class="btn btn-primary" ng-show="username">
-        <i class="fa fa-rocket"></i>&nbsp;
-        {{username}}
-      </a>
+      <div class="btn-group" ng-show="username">
+        <a
+          ui-sref="user.show({username: username})"
+          class="btn btn-primary">
+
+          {{username}}
+        </a>
+
+        <a
+          href=""
+          class="btn btn-primary dropdown-toggle"
+          data-toggle="dropdown">
+
+          <message-notification-icon></message-notification-icon>
+          <span class="caret"></span>
+        </a>
+
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li>
+            <a ui-sref="user.messages">
+              Messages
+            </a>
+          </li>
+          <li>
+            <a ui-sref="user.logout">
+              Log out
+            </a>
+          </li>
+        </ul>
+      </div>
 
       <a ui-sref="book.new" class="btn btn-primary">
         Add a book
@@ -32,10 +57,6 @@
 
       <a ui-sref="user.new" class="btn btn-success xs-pull-left ms-pull-left md-pull-right" ng-hide="username">
         Sign up
-      </a>
-
-      <a ui-sref="user.logout" class="btn btn-success xs-pull-left ms-pull-left md-pull-right" ng-show="username">
-        Log out
       </a>
     </div>
   </div>

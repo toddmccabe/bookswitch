@@ -1,37 +1,34 @@
-<div ng-show="isUser">
-  <a name="messages"></a>
-  <h3>Messages</h3>
+<h3>Messages</h3>
 
-  <div class="item-list" ng-show="conversationTotalCount > 0">
-    <div class="item-list-header row">
-      <div class="col-xs-12">
-        User
+<div class="item-list" ng-show="conversationTotalCount > 0">
+  <div class="item-list-header row">
+    <div class="col-xs-12">
+      User
+    </div>
+  </div>
+
+  <div
+    class="item-list-item row"
+    ng-repeat="conversation in conversations"
+    ng-class="{bold: !conversation.most_recent_message.read && conversation.most_recent_message.sender_username != username}">
+
+    <a ui-sref="conversation.update({id: conversation.id})">
+      <div class="col-xs-4 col-ms-3 col-md-2 overflow-ellipsis">
+        {{conversation.usernames.remove(username)[0]}}
       </div>
-    </div>
-
-    <div
-      class="item-list-item row"
-      ng-repeat="conversation in conversations"
-      ng-class="{bold: !conversation.most_recent_message.read && conversation.most_recent_message.sender_username != username}">
-
-      <a ui-sref="conversation.update({id: conversation.id})">
-        <div class="col-xs-4 col-ms-3 col-md-2 overflow-ellipsis">
-          {{conversation.usernames.remove(username)[0]}}
-        </div>
-        <div class="col-xs-8 col-ms-9 col-md-10 overflow-ellipsis">
-          {{conversation.most_recent_message.body}}
-        </div>
-      </a>
-    </div>
+      <div class="col-xs-8 col-ms-9 col-md-10 overflow-ellipsis">
+        {{conversation.most_recent_message.body}}
+      </div>
+    </a>
   </div>
+</div>
 
-  <pagination
-    results="conversations"
-    results-total-count="conversationTotalCount"
-    page="page">
-  </pagination>
+<pagination
+  results="conversations"
+  results-total-count="conversationTotalCount"
+  page="page">
+</pagination>
 
-  <div ng-show="conversationTotalCount == 0" class="br-gutter">
-    You have no messages.
-  </div>
+<div ng-show="conversationTotalCount == 0" class="br-gutter">
+  You have no messages.
 </div>

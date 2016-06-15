@@ -1,24 +1,22 @@
 angular.module('bookSwitchApp').controller('UserDeactivateController', function(
   $scope,
   $state,
-  $stateParams,
   User,
   SiteData
 ) {
+  var username = SiteData.get('username');
   var user = new User();
-
-  user.$get({username: $stateParams.username});
 
   $scope.deactivate = function() {
     user.active = false;
 
-    // save active flag, then logout
+    // save active flag and logout
     user.$update({
-      username: $stateParams.username,
+      username: username,
       token: SiteData.get('token')
     }, function(response) {
       $state.go('user.logout', {
-        username: $stateParams.username,
+        username: username,
         deactivated: true
       });
     });

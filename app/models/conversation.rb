@@ -8,14 +8,18 @@ class Conversation
   many :books, :in => :book_ids
   many :users, :in => :user_ids
 
-  attr_accessible :messages, :books, :users
+  attr_accessible :messages,
+                  :books,
+                  :users
 
   validate :two_users_present
   validates :messages, :presence => true
 
   timestamps!
 
-  after_save :associate_with_users!, :notify_recipient
+  after_save :associate_with_users!,
+             :notify_recipient,
+             :add_to_recipient_unread_conversations
 
   # this is used as a conversation preview
   # include only relevant properties
@@ -26,9 +30,19 @@ class Conversation
 
   # mark all messages in the conversation as read if user is the recipient
   def mark_messages_as_read!(user)
+    unread_messages = false
+
     messages.where(:read => false, :recipient_id => user.id.to_s).each do |message|
-      message.read = true
-      message.save
+      if !message.read
+        message.read = true
+        message.save
+
+        unread_messages = true
+      end
+    end
+
+    if unread_messages
+      user.update_unread_conversations('remove', id)
     end
   end
 
@@ -79,5 +93,10 @@ class Conversation
         message.conversation.id.to_s
       ).deliver_later
     end
+  end
+
+  def add_to_recipient_unread_conversations
+    recipient = messages.last.recipient
+    recipient.update_unread_conversations('add', id)
   end
 end

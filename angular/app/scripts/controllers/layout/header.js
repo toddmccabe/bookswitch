@@ -1,7 +1,8 @@
 angular.module('bookSwitchApp').controller('LayoutHeaderController', function(
   $scope,
   $state,
-  $stateParams
+  $stateParams,
+  SiteData
 ) {
   $scope.searchQuery = $stateParams.query;
 
@@ -18,4 +19,13 @@ angular.module('bookSwitchApp').controller('LayoutHeaderController', function(
       page: null
     });
   };
+
+  // automatically update scope username from SiteData factory
+  $scope.$watch(function() {
+    return SiteData.get('username');
+  },
+  function(value) {
+    // automatically update $scope.username
+    $scope.username = value;
+  });
 });

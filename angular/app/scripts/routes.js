@@ -70,22 +70,28 @@ angular.module('bookSwitchApp').config(function(
       templateUrl: 'views/user/logout.html',
       loginRequired: true
     })
-    .state('user.show', {
-      url: '/user/:username?updated&page&sort&direction',
-      controller: 'UserShowController',
-      templateUrl: 'views/user/show.html'
+    .state('user.messages', {
+      url: '/user/messages?page',
+      controller: 'UserMessagesController',
+      templateUrl: 'views/user/messages.html',
+      loginRequired: true
     })
     .state('user.update', {
-      url: '/user/update/:username',
+      url: '/user/update',
       controller: 'UserUpdateController',
       templateUrl: 'views/user/update.html',
       loginRequired: true
     })
     .state('user.deactivate', {
-      url: '/user/deactivate/:username',
+      url: '/user/deactivate',
       controller: 'UserDeactivateController',
       templateUrl: 'views/user/deactivate.html',
       loginRequired: true
+    })
+    .state('user.show', {
+      url: '/user/:username?updated&page&sort&direction',
+      controller: 'UserShowController',
+      templateUrl: 'views/user/show.html'
     })
     .state('conversation', {
       parent: 'application',

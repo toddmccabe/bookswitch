@@ -5,6 +5,11 @@ angular.module('bookSwitchApp').constant('appConfig', {
   // number of results per page
   resultsPerPage: 10,
 
+  // how many seconds to wait before polling resources
+  polling: {
+    userNotifications: 15
+  },
+
   // Quagga barcode capture config
   quagga: {
     inputStream: {

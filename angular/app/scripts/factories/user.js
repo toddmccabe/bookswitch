@@ -9,6 +9,9 @@ angular.module('bookSwitchApp').factory('User', function(
     },
     'update': {
       method: 'PUT'
+    },
+    'notifications': {
+      url: '/api/user/notifications'
     }
   });
 });
