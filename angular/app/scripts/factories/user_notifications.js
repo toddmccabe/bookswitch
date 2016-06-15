@@ -11,6 +11,10 @@ angular.module('bookSwitchApp').factory('UserNotifications', function(
     // add event listeners
     $rootScope.$on('SessionValidated', startPolling);
     $rootScope.$on('SessionInvalidated', stopPolling);
+    // if a message has been read, update notifications.
+    // this is to prevent a delay between reading messages
+    // and the new messages icon disappearing
+    $rootScope.$on('MessageRead', pollNow);
   }
 
   // readability alias
@@ -29,6 +33,14 @@ angular.module('bookSwitchApp').factory('UserNotifications', function(
 
     // poll again in X seconds
     timeoutPromise = $timeout(poll, appConfig.polling.userNotifications * 1000);
+  }
+
+  var pollNow = function() {
+    // cancel previously scheduled poll
+    stopPolling();
+
+    // poll immediately and schedule next poll
+    poll();
   }
 
   var updateNotifications = function(response) {

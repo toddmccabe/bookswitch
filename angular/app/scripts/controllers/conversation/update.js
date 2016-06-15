@@ -1,5 +1,6 @@
 angular.module('bookSwitchApp').controller('ConversationUpdateController', function(
   $scope,
+  $rootScope,
   $state,
   $stateParams,
   Conversation,
@@ -19,6 +20,7 @@ angular.module('bookSwitchApp').controller('ConversationUpdateController', funct
     username: $scope.username,
     token: $scope.token
   }, function(response) {
+    // success
     if(response.book.id) {
       Book.get({id: response.book.id}, function(response) {
         $scope.book = response;
@@ -36,6 +38,9 @@ angular.module('bookSwitchApp').controller('ConversationUpdateController', funct
       // inactive account
       $scope.userInactive = true;
     });
+
+    // inform anyone interested that we read a message
+    $rootScope.$broadcast('MessageRead');
   }, function(response){
     $scope.errors = response.data.errors;
   });

@@ -16,5 +16,5 @@ angular.module('bookSwitchApp').controller('ApplicationController', function(
 
     // start watcher for user notifications polling (new messages etc.)
     UserNotifications.initialize();
-  }, 0);
+  });
 });
