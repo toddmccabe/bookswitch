@@ -88,6 +88,7 @@ class Conversation
     if message.recipient.active
       UserMailer.new_message(
         message.recipient.email,
+        message.sender_username,
         message.body,
         book_title,
         message.conversation.id.to_s
