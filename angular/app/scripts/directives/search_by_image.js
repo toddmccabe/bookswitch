@@ -12,17 +12,15 @@ angular.module('bookSwitchApp').directive('searchByImage', function(
       var fileInput = $($element).find('input[type=file]');
       var scanPreview = $($element).find('.search-by-image-preview')[0];
       var scanPreviewDistanceGuide = $(scanPreview).siblings('.search-by-image-preview-distance-guide');
+      // mask is used to allow the user to click away from the webcam window to close it
+      var mask = $('#mask');
 
       // open/close live camera capture for barcode scan
       var toggleSearchByImage = function() {
-        // toggle logic
-        if(BarcodeScanner.isRunning) {
-          BarcodeScanner.stop();
-
-          // if the second click was on a seperate implimentation
-          // of this directive, close the first and open the second
-          if(BarcodeScanner.scopeID == $scope.$id)
-            return;
+        // if preview was open and we aren't
+        // attempting to open another instance
+        if(closeSearchByImage()) {
+          return;
         }
 
         // initiate barcode detection
@@ -33,10 +31,26 @@ angular.module('bookSwitchApp').directive('searchByImage', function(
           scopeID: $scope.$id,
           inputStream: {
             target: scanPreview
-          }
+          },
+          mask: mask
         });
 
+        mask.show();
+
         scan.then(scanSuccess);
+      }
+
+      var closeSearchByImage = function() {
+        if(BarcodeScanner.isRunning) {
+          BarcodeScanner.stop();
+
+          // hide background click mask
+          mask.hide();
+
+          // return true if the user closed the current BarcodeScanner instance
+          // return false if we're closing a BarcodeScanner to open another
+          return BarcodeScanner.scopeID == $scope.$id ? true : false;
+        }
       }
 
       // user has "uploaded" a picture of a barcode
@@ -65,11 +79,14 @@ angular.module('bookSwitchApp').directive('searchByImage', function(
       }
 
       var addEventHandlers = function() {
-        // Livestream
-        scanButton.on('click', toggleSearchByImage);
+        // livestream
+        scanButton.click(toggleSearchByImage);
 
-        // File upload
-        fileInput.on('change', searchByFile);
+        // file upload
+        fileInput.change(searchByFile);
+
+        // close preview by clicking anywhere
+        mask.click(closeSearchByImage);
       }
 
       // attach events

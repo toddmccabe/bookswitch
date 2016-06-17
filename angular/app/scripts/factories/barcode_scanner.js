@@ -33,6 +33,7 @@ angular.module('bookSwitchApp').factory('BarcodeScanner', function(
 
       preview = config.scanPreview;
       previewDistanceGuide = config.scanPreviewDistanceGuide;
+      mask = config.mask;
       _this.scopeID = config.scopeID;
 
       // merge parameters into config
@@ -93,6 +94,9 @@ angular.module('bookSwitchApp').factory('BarcodeScanner', function(
 
       // remove canvas/video elements as Quagga does not do this by default
       $(preview).empty();
+
+      // hide background click mask
+      mask.hide();
 
       this.isRunning = false;
     },
