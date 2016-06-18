@@ -1,5 +1,5 @@
 <h3 ng-hide="p.query">Books</h3>
-<h3 ng-show="p.query">Books matching {{p.query}}</h3>
+<h3 ng-show="p.query">Search results</h3>
 
 <div class="item-list" ng-show="books.length">
   <div class="item-list-header row hidden-xs">
@@ -67,14 +67,16 @@
 
 <div ng-show="booksTotalCount == 0" class="br-gutter">
   <div ng-show="p.query">
-    No results.
+    We do not have that book at this time.
   </div>
 
   <div ng-show="!p.query && isUser">
-    You have no books.
+    You currently have no books listed.
+    <a ui-sref="book.new" class="bold underline">Add a book</a>
+    to begin.
   </div>
 
   <div ng-show="!p.query && !isUser">
-    This user has no books.
+    This user currently has no books listed.
   </div>
 </div>

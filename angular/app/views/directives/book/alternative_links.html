@@ -18,20 +18,19 @@
           </div>
 
           <div class="col-ms-12">
-            by {{amazon.book.author}}
+            by
+            <strong>
+              {{amazon.book.author}}
+            </strong>
           </div>
 
           <div class="col-ms-8" ng-show="amazon.book.amazon.price.new">
-            <strong>
-              New:
-            </strong>
+            New:
             {{amazon.book.amazon.price.new}}
           </div>
 
           <div class="col-ms-8" ng-show="amazon.book.amazon.price.used">
-            <strong>
-              Used:
-            </strong>
+            Used:
             {{amazon.book.amazon.price.used}}
           </div>
         </div>
