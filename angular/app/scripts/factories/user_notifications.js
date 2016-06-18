@@ -44,10 +44,10 @@ angular.module('bookSwitchApp').factory('UserNotifications', function(
   }
 
   var updateNotifications = function(response) {
-    var unread_conversations = response.unread_conversations;
+    var unreadConversations = response.unread_conversations;
 
-    if(unread_conversations !== SiteData.get('unreadConversations')) {
-      SiteData.set('unreadConversations', unread_conversations);
+    if(unreadConversations !== SiteData.get('unreadConversations')) {
+      SiteData.set('unreadConversations', unreadConversations);
 
       $rootScope.$broadcast('UserNotificationsUnreadConversationsChanged');
     }
