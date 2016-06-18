@@ -5,15 +5,15 @@ angular.module('bookSwitchApp').factory('SessionUtilities', function(
 ) {
   // has the session been validated?
   var sessionValidated = false;
-  
+
   // validate session if username and token are present
   var startSessionValidation = function() {
     $rootScope.$watch(function() {
       return SiteData.get('username');
     },
     function(value) {
+      // if username is present, attempt to authenticate
       if(value) {
-        // validate session
         Session.get({
           id: SiteData.get('token'),
           username: value
@@ -22,20 +22,35 @@ angular.module('bookSwitchApp').factory('SessionUtilities', function(
           sessionValidated = true;
           $rootScope.$broadcast('SessionValidated');
         }, function() {
-          // invalid session. user may have logged off from another browser
-          // remove all site data
+          // invalid session. user may have logged off from
+          // another browser. remove all site data.
           SiteData.removeAll();
+
+          $rootScope.$broadcast('SessionInvalidated');
         });
 
-      // session was previously validated,
-      // but session data is now blank
+      // session data was validated but has since been removed
       } else if(sessionValidated) {
         $rootScope.$broadcast('SessionInvalidated');
       }
     });
   }
 
+  var addListenerForCssClasses = function() {
+    $rootScope.$on('SessionValidated', addCssClassLoggedIn);
+    $rootScope.$on('SessionInvalidated', removeCssClassLoggedIn);
+  }
+
+  var addCssClassLoggedIn = function() {
+    $('html').addClass('logged-in');
+  }
+
+  var removeCssClassLoggedIn = function() {
+    $('html').removeClass('logged-in');
+  }
+
   return {
-    startSessionValidation: startSessionValidation
+    startSessionValidation: startSessionValidation,
+    addListenerForCssClasses: addListenerForCssClasses
   }
 });

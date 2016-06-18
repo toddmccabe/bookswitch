@@ -1,0 +1,26 @@
+/* https://medium.com/developing-with-sass/creating-a-dead-simple-sass-mixin-to-handle-responsive-breakpoints-889927b37740#.7vwxyt5xb */
+@mixin breakpoint($class) {
+  @if $class == xs {
+    @media (max-width: $screen-ms - 1) { @content; }
+  }
+
+  @else if $class == ms {
+    @media (min-width: $screen-ms) { @content; }
+  }
+
+  @else if $class == sm {
+    @media (min-width: $screen-sm) { @content; }
+  }
+
+  @else if $class == md {
+    @media (min-width: $screen-md) { @content; }
+  }
+
+  @else if $class == lg {
+    @media (min-width: $screen-lg) { @content; }
+  }
+
+  @else {
+    @warn "Breakpoint mixin supports: xs, sm, md, lg";
+  }
+}

@@ -11,6 +11,24 @@ label {
   &.pull-left {
     margin-left: 0;
   }
+
+  &.xs-logged-in-pull-left {
+    @include breakpoint(xs) {
+      margin-left: 0;
+    }
+  }
+
+  &.ms-logged-in-pull-left {
+    @include breakpoint(ms) {
+      margin-left: 0;
+    }
+  }
+
+  &.md-logged-in-pull-right {
+    @include breakpoint(md) {
+      margin-left: 4px;
+    }
+  }
 }
 
 textarea {

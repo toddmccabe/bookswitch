@@ -4,10 +4,12 @@ angular.module('bookSwitchApp').factory('LoginRequired', function(
 ) {
   function stateLoginCheck(
     event,
-    toState
+    attemptedState
   ) {
+    var attemptedState = attemptedState || $state.current;
+
     // if user is attempting to load a logged in-only state and they have no token
-    if(toState.loginRequired && !SiteData.get('token')) {
+    if(attemptedState.loginRequired && !SiteData.get('token')) {
       event.preventDefault();
 
       // redirect to login page with attempted url
@@ -20,10 +22,11 @@ angular.module('bookSwitchApp').factory('LoginRequired', function(
   }
 });
 
-// run LoginRequired.stateLoginCheck when state changes
+// run LoginRequired.stateLoginCheck when view state or session state changes
 angular.module('bookSwitchApp').run(function(
   $rootScope,
   LoginRequired
 ) {
   $rootScope.$on('$stateChangeStart', LoginRequired.stateLoginCheck);
+  $rootScope.$on('SessionInvalidated', LoginRequired.stateLoginCheck);
 });

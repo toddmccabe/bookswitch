@@ -14,6 +14,9 @@ angular.module('bookSwitchApp').controller('ApplicationController', function(
     // start watcher for validating session
     SessionUtilities.startSessionValidation();
 
+    // start watcher for adding css classes depending on session state
+    SessionUtilities.addListenerForCssClasses();
+
     // start watcher for user notifications polling (new messages etc.)
     UserNotifications.initialize();
   });

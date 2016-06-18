@@ -67,8 +67,7 @@ angular.module('bookSwitchApp').config(function(
     .state('user.logout', {
       url: '/user/logout?deactivated',
       controller: 'UserLogoutController',
-      templateUrl: 'views/user/logout.html',
-      loginRequired: true
+      templateUrl: 'views/user/logout.html'
     })
     .state('user.messages', {
       url: '/user/messages?page',
