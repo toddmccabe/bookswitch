@@ -1,9 +1,42 @@
 .messages {
   .message {
-    margin-bottom: 20px;  
+    margin-bottom: 20px;
 
     &:last-of-type {
       margin-bottom: 0;
+    }
+
+    .date-group {
+      text-align: center;
+      margin-bottom: $grid-gutter-width;
+      @include opacity(0.4);
+    }
+
+    .well {
+      display: inline-block;
+      margin-bottom: 5px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+      @include breakpoint(ms) {
+        max-width: 47%;
+      }
+    }
+
+    .info {
+      clear: both;
+      font-size: 10px;
+      padding: 0 3px;
+    }
+
+    a {
+      float: left;
+      text-decoration: none;
+
+      /* add trailing bullet and spacing */
+      &:after {
+        content: '\00a0\2022\00a0';
+      }
     }
 
     &.sender {
@@ -12,20 +45,19 @@
       .well {
         float: right;
       }
-    }
 
-    .well {
-      display: inline-block;
-      max-width: 47%;
-      margin-bottom: 5px;
-      padding-top: 5px;
-      padding-bottom: 5px;
-    }
+      a {
+        float: none;
 
-    .info {
-      clear: both;
-      font-size: 10px;
-      padding: 0 3px;
+        /* add leading bullet and spacing */
+        &:before {
+          content: '\2022\00a0';
+        }
+
+        &:after {
+          content: '';
+        }
+      }
     }
   }
 }

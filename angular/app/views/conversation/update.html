@@ -9,7 +9,7 @@
 
   <div class="alert alert-warning" ng-show="bookUnavailable">
     The other user has deactivated their account,
-    and the book is no longer available.
+    and the referenced book is no longer available.
   </div>
 </div>
 
@@ -18,15 +18,22 @@
 </div>
 
 <div class="messages">
-  <div class="message" ng-repeat="message in conversation.messages" ng-class="{'sender': message.sender_username == username}">
+  <div
+    class="message"
+    ng-repeat="message in conversation.messages"
+    ng-class="{'sender': message.sender_username == username}">
+
+    <div class="date-group" ng-if="message.dateGroup">
+      {{message.dateGroup}}
+    </div>
+
     <div class="well well-sm">
       {{message.body}}
     </div>
-    <div class="info">
-      {{message.created_at_formatted | date: 'EEEE, MMMM d, y'}}
-      <a ui-sref="user.show({username: message.sender_username})">
-        {{message.sender_username}}
-      </a>
+
+    <div class="info" ng-attr-title="{{message.created_at_formatted | date: 'h:mm a - EEEE, MMMM d, y'}}">
+      {{message.created_at_formatted | date: 'h:mm a'}}
+      <a ui-sref="user.show({username: message.sender_username})">{{message.sender_username}}</a>
     </div>
   </div>
 </div>

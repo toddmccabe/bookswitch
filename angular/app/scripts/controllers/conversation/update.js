@@ -3,6 +3,7 @@ angular.module('bookSwitchApp').controller('ConversationUpdateController', funct
   $rootScope,
   $state,
   $stateParams,
+  $filter,
   Conversation,
   Book,
   User,
@@ -15,12 +16,9 @@ angular.module('bookSwitchApp').controller('ConversationUpdateController', funct
   $scope.username = SiteData.get('username');
   $scope.token = SiteData.get('token');
 
-  $scope.conversation.$get({
-    id: $stateParams.id,
-    username: $scope.username,
-    token: $scope.token
-  }, function(response) {
-    // success
+  // retrieve associations and set up properties
+  var conversationGetSuccess = function(response) {
+    // find book if referenced
     if(response.book.id) {
       Book.get({id: response.book.id}, function(response) {
         $scope.book = response;
@@ -39,12 +37,19 @@ angular.module('bookSwitchApp').controller('ConversationUpdateController', funct
       $scope.userInactive = true;
     });
 
+    // add date grouping to messages
+    messagesAddDateGroups($scope.conversation.messages);
+
     // inform anyone interested that we read a message
     $rootScope.$broadcast('MessageRead');
-  }, function(response){
-    $scope.errors = response.data.errors;
-  });
+  }
 
+  // show errors
+  var conversationGetFailure = function(response) {
+    $scope.errors = response.data.errors;
+  }
+
+  // send a reply
   $scope.update = function() {
     $scope.conversation.$update({
       id: $scope.conversation.id,
@@ -61,4 +66,31 @@ angular.module('bookSwitchApp').controller('ConversationUpdateController', funct
       $scope.errors = response.data.errors;
     });
   }
+
+  // add date grouping to messages
+  var messagesAddDateGroups = function(messages) {
+    var previousDateGroup = null;
+
+    // loop through conversation messages and conditionally set dateGroup property
+    angular.forEach(messages, function(value, key) {
+      // set dateGroup to <day, month date, year> format
+      var dateGroup = $filter('date')(value.created_at_formatted, 'EEEE, MMMM d, y');
+
+      // only assign dateGroup property if the message was
+      // sent on a different day than the previous message
+      if(dateGroup !== previousDateGroup) {
+        messages[key].dateGroup = dateGroup;
+      }
+
+      // set up variable for next message's date comparison
+      previousDateGroup = dateGroup;
+    });
+  }
+
+  // get conversation
+  $scope.conversation.$get({
+    id: $stateParams.id,
+    username: $scope.username,
+    token: $scope.token
+  }, conversationGetSuccess, conversationGetFailure);
 });
