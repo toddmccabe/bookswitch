@@ -20,12 +20,11 @@ angular.module('bookSwitchApp').controller('LayoutHeaderController', function(
     });
   };
 
-  // automatically update scope username from SiteData factory
+  // automatically update $scope.username from SiteData factory
   $scope.$watch(function() {
     return SiteData.get('username');
   },
   function(value) {
-    // automatically update $scope.username
     $scope.username = value;
   });
 });

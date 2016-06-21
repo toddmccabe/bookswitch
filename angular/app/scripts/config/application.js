@@ -10,6 +10,21 @@ angular.module('bookSwitchApp').constant('appConfig', {
     userNotifications: 15
   },
 
+  // ui settings
+  ui: {
+    scroll: {
+      auto: {
+        padding: {
+          // when auto-scrolling to an element, add this
+          // many pixels above it as viewport padding
+          top: 10
+        },
+        // auto-scrolling should be done in this many milliseconds
+        duration: 300
+      }
+    }
+  },
+
   // Quagga barcode capture config
   quagga: {
     inputStream: {

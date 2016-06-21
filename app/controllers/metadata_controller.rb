@@ -2,8 +2,10 @@ class MetadataController < ApplicationController
   def show
     @metadata = Metadata.new(metadata_params).find()
 
-    if @metadata
+    if @metadata.ItemLookupResponse.Items.Item
       render
+    else
+      head 418
     end
   end
 

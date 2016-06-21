@@ -26,7 +26,8 @@ angular.module('bookSwitchApp').config(function(
     .state('book.search', {
       url: '/book/search?query&page&sort&direction',
       controller: 'BookSearchController',
-      templateUrl: 'views/book/search.html'
+      templateUrl: 'views/book/search.html',
+      reloadOnSearch: false
     })
     .state('book.show', {
       url: '/book/:id?added&updated',
@@ -73,7 +74,8 @@ angular.module('bookSwitchApp').config(function(
       url: '/user/messages?page',
       controller: 'UserMessagesController',
       templateUrl: 'views/user/messages.html',
-      loginRequired: true
+      loginRequired: true,
+      reloadOnSearch: false
     })
     .state('user.update', {
       url: '/user/update',
@@ -90,7 +92,8 @@ angular.module('bookSwitchApp').config(function(
     .state('user.show', {
       url: '/user/:username?updated&page&sort&direction',
       controller: 'UserShowController',
-      templateUrl: 'views/user/show.html'
+      templateUrl: 'views/user/show.html',
+      reloadOnSearch: false
     })
     .state('conversation', {
       parent: 'application',

@@ -14,3 +14,20 @@ Array.prototype.remove = Array.prototype.remove || function(element) {
 
   return this;
 }
+
+// shorthand for returning jQuery's first match or undefined
+// http://stackoverflow.com/questions/920236/how-can-i-detect-if-a-selector-returns-null
+$.fn.firstOrUndefined = function () {
+  return (this.length !== 0) ? this.first() : undefined;
+}
+
+// smooth scroll animation
+angular.module('bookSwitchApp').config(function(
+  appConfig
+) {
+  $.fn.scrollToSmoothly = function() {
+    $('html, body').animate({
+      scrollTop: this.offset().top - appConfig.ui.scroll.auto.padding.top
+    }, appConfig.ui.scroll.auto.duration);
+  }
+});

@@ -1,37 +1,48 @@
-<div ng-if="amazon.book">
+<div ng-if="alternatives">
   <div class="bold br-gutter-third">
     Where to find this book
   </div>
 
-  <a href="{{amazon.book.amazon.link}}" ng-if="amazon">
+  <a href="{{alternatives.amazon.book.amazon.link}}" ng-if="alternatives.amazon">
     <div class="well well-sm position-relative">
       <div class="position-bottom-right br-gutter-third">
         <img src="/images/brands/amazon/logo.png" class="amazon-logo" />
       </div>
 
       <div class="row">
-        <book-image book="amazon.book" link="amazon.book.amazon.link" class="col-ms-2 col-md-1 hidden-xs visible-ms" ng-if="amazon.book.image"></book-image>
+        <book-image
+          book="alternatives.amazon.book"
+          link="alternatives.amazon.book.amazon.link"
+          class="col-ms-2 col-md-1 hidden-xs visible-ms"
+          ng-if="alternatives.amazon.book.image">
+        </book-image>
 
-        <div ng-class="{'col-ms-10 col-md-11' : amazon.book.image, 'col-ms-12' : !amazon.book.image}">
+        <div ng-class="{'col-ms-10 col-md-11' : alternatives.amazon.book.image, 'col-ms-12' : !alternatives.amazon.book.image}">
           <div class="col-ms-12 bold">
-            {{amazon.book.title}}
+            {{alternatives.amazon.book.title}}
           </div>
 
           <div class="col-ms-12">
             by
             <strong>
-              {{amazon.book.author}}
+              {{alternatives.amazon.book.author}}
             </strong>
           </div>
 
-          <div class="col-ms-8" ng-show="amazon.book.amazon.price.new">
+          <div
+            class="col-ms-8"
+            ng-show="alternatives.amazon.book.amazon.price.new">
+
             New:
-            {{amazon.book.amazon.price.new}}
+            {{alternatives.amazon.book.amazon.price.new}}
           </div>
 
-          <div class="col-ms-8" ng-show="amazon.book.amazon.price.used">
+          <div
+            class="col-ms-8"
+            ng-show="alternatives.amazon.book.amazon.price.used">
+
             Used:
-            {{amazon.book.amazon.price.used}}
+            {{alternatives.amazon.book.amazon.price.used}}
           </div>
         </div>
       </div>
