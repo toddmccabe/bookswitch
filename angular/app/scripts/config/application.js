@@ -20,7 +20,11 @@ angular.module('bookSwitchApp').constant('appConfig', {
           top: 10
         },
         // auto-scrolling should be done in this many milliseconds
-        duration: 300
+        duration: {
+          // auto-scrolling on iOS works best if done without delay
+          iOS: 0,
+          default: 300
+        }
       }
     }
   },

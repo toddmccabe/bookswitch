@@ -7,6 +7,12 @@ angular.module('bookSwitchApp').factory('BrowserSupport', function() {
                       navigator.msGetUserMedia ||
                       navigator.mozGetUserMedia ||
                       navigator.webkitGetUserMedia) != "undefined";
+      },
+
+      // are they using iOS?
+      // http://stackoverflow.com/questions/17522147/ios-android-detect-and-redirect
+      iOS: function() {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
       }
     },
 

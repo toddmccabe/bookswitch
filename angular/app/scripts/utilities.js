@@ -22,12 +22,15 @@ $.fn.firstOrUndefined = function () {
 }
 
 // smooth scroll animation
-angular.module('bookSwitchApp').config(function(
+angular.module('bookSwitchApp').run(function(
+  BrowserSupport,
   appConfig
 ) {
+  var duration = appConfig.ui.scroll.auto.duration[BrowserSupport.detect.iOS() ? 'iOS' : 'default'];
+
   $.fn.scrollToSmoothly = function() {
     $('html, body').animate({
       scrollTop: this.offset().top - appConfig.ui.scroll.auto.padding.top
-    }, appConfig.ui.scroll.auto.duration);
+    }, duration);
   }
 });
