@@ -13,7 +13,7 @@ angular.module('bookSwitchApp').controller('UserDeactivateController', function(
     // save active flag and logout
     user.$update({
       username: username,
-      token: SiteData.get('token')
+      authentication_token: SiteData.get('authentication_token')
     }, function(response) {
       $state.go('user.logout', {
         username: username,

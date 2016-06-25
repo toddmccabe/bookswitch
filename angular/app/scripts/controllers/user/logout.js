@@ -5,11 +5,12 @@ angular.module('bookSwitchApp').controller('UserLogoutController', function(
   SiteData
 ) {
   $scope.deactivated = $stateParams.deactivated;
-  var token = SiteData.get('token');
   var session = new Session();
 
-  if(token)
-    session.$remove({id: token});
+  session.$remove({
+    username: SiteData.get('username'),
+    id: SiteData.get('authentication_token')
+  });
 
   SiteData.removeAll();
 });

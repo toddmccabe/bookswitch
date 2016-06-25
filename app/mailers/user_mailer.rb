@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
-  def confirmation(to, token)
-    @token = token
+  def confirmation(to, authentication_token)
+    @authentication_token = authentication_token
     
     mail(to: to, subject: 'Please confirm your account')
   end
@@ -11,5 +11,11 @@ class UserMailer < ApplicationMailer
     @conversation_id = conversation_id
 
     mail(to: to, subject: "You have a new message from #{from_username}")
+  end
+
+  def password_reset(to, password_reset_token)
+    @password_reset_token = password_reset_token
+
+    mail(to: to, subject: 'Password reset requested')
   end
 end

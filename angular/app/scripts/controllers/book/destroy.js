@@ -11,7 +11,7 @@ angular.module('bookSwitchApp').controller('BookDestroyController', function(
     Book.delete({
       id: $stateParams.id,
       username: SiteData.get('username'),
-      token: SiteData.get('token')
+      authentication_token: SiteData.get('authentication_token')
     }, function() {
       $scope.removed = true;
     });

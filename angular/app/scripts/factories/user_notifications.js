@@ -26,7 +26,7 @@ angular.module('bookSwitchApp').factory('UserNotifications', function(
     // query /api/user/notifications for updates
     User.notifications({
       username: SiteData.get('username'),
-      token: SiteData.get('token')
+      authentication_token: SiteData.get('authentication_token')
     },
       updateNotifications
     );

@@ -56,12 +56,12 @@ angular.module('bookSwitchApp').config(function(
       templateUrl: 'views/user/new.html'
     })
     .state('user.confirm', {
-      url: '/user/confirm/:token',
+      url: '/user/confirm/:authentication_token',
       controller: 'UserConfirmController',
       templateUrl: 'views/user/confirm.html'
     })
     .state('user.login', {
-      url: '/user/login?confirmed&afterURL',
+      url: '/user/login?confirmed&afterURL&passwordUpdated',
       controller: 'UserLoginController',
       templateUrl: 'views/user/login.html'
     })
@@ -88,6 +88,16 @@ angular.module('bookSwitchApp').config(function(
       controller: 'UserDeactivateController',
       templateUrl: 'views/user/deactivate.html',
       loginRequired: true
+    })
+    .state('user.password_reset_request', {
+      url: '/user/password_reset_request',
+      controller: 'UserPasswordResetRequestController',
+      templateUrl: 'views/user/password_reset_request.html'
+    })
+    .state('user.password_reset_update', {
+      url: '/user/password_reset_update/:passwordResetToken',
+      controller: 'UserPasswordResetUpdateController',
+      templateUrl: 'views/user/password_reset_update.html'
     })
     .state('user.show', {
       url: '/user/:username?updated&page&sort&direction',

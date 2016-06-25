@@ -12,6 +12,7 @@ angular.module('bookSwitchApp').controller('UserLoginController', function(
   $scope.loginFailed = false;
   $scope.confirmed = $stateParams.confirmed;
   $scope.afterURL = $stateParams.afterURL;
+  $scope.passwordUpdated = $stateParams.passwordUpdated;
 
   $scope.login = function() {
     // get actual values from input elements
@@ -20,6 +21,7 @@ angular.module('bookSwitchApp').controller('UserLoginController', function(
     session.password = $('#password').val();
 
     session.$save({}, $scope.handleLoginSuccess, function(response) {
+      $scope.loginFailed = true;
       $scope.errors = response.data.error;
     });
   };
@@ -29,7 +31,7 @@ angular.module('bookSwitchApp').controller('UserLoginController', function(
       SiteData.set('saveToCookie', true);
     }
 
-    SiteData.set('token', response.token);
+    SiteData.set('authentication_token', response.authentication_token);
     SiteData.set('username', response.username);
 
     if($scope.afterURL) {

@@ -1,7 +1,7 @@
 class ConversationController < ApplicationController
   def index
     page = (params[:page].try :to_i) || 1
-    user = User.find_from_token(params)
+    user = User.find_from_authentication_token(params)
 
     if !user
       render json: {errors: 'Unable to retrieve conversations. Please make sure you are logged in.'}, status: 404
@@ -26,7 +26,7 @@ class ConversationController < ApplicationController
   end
 
   def create
-    sender = User.find_from_token(params)
+    sender = User.find_from_authentication_token(params)
     recipient = User.find_by_username(params[:toUsername])
     book = Book.find(params[:bookId])
     
@@ -50,7 +50,7 @@ class ConversationController < ApplicationController
 
   def update
     conversation = Conversation.find(params[:id])
-    sender = User.find_from_token(params)
+    sender = User.find_from_authentication_token(params)
     recipient = conversation.other_user(sender)
 
     conversation.authenticate(sender)
@@ -76,7 +76,7 @@ class ConversationController < ApplicationController
 
   def show
     @conversation = Conversation.find(params[:id])
-    user = User.find_from_token(params)
+    user = User.find_from_authentication_token(params)
 
     # check if conversation exists
     if !@conversation

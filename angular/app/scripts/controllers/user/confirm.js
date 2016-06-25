@@ -5,7 +5,7 @@ angular.module('bookSwitchApp').controller('UserConfirmController', function(
   User
 ) {
   User.confirm({
-    token: $stateParams.token
+    authentication_token: $stateParams.authentication_token
   }, function() {
     $state.go('user.login', {
       confirmed: true

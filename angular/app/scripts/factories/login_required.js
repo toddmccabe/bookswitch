@@ -8,8 +8,8 @@ angular.module('bookSwitchApp').factory('LoginRequired', function(
   ) {
     var attemptedState = attemptedState || $state.current;
 
-    // if user is attempting to load a logged in-only state and they have no token
-    if(attemptedState.loginRequired && !SiteData.get('token')) {
+    // if user is attempting to load a logged in-only state and they have no authentication token
+    if(attemptedState.loginRequired && !SiteData.get('authentication_token')) {
       event.preventDefault();
 
       // redirect to login page with attempted url

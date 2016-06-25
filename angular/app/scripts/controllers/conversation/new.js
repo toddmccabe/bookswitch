@@ -10,7 +10,7 @@ angular.module('bookSwitchApp').controller('ConversationNewController', function
 
   // add references to sender, recipient
   $scope.conversation.username = SiteData.get('username');
-  $scope.conversation.token = SiteData.get('token');
+  $scope.conversation.authentication_token = SiteData.get('authentication_token');
   $scope.conversation.toUsername = $stateParams.to;
 
   // detect if user is attempting to message themselves

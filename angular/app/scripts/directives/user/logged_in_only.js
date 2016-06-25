@@ -7,7 +7,7 @@ angular.module('bookSwitchApp').directive('loggedInOnly', function(
     link: function($scope, $element) {
       $scope.checkIfLoggedIn = function(event) {
         // if the user isn't logged in
-        if(!SiteData.get('token')) {
+        if(!SiteData.get('authentication_token')) {
           event.preventDefault();
 
           // redirect to login page with attempted url

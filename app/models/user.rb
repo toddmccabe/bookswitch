@@ -5,7 +5,8 @@ class User
   key :email,                 String
   key :username,              String,   :required => true
   key :password,              String,   :required => true
-  key :token,                 String,   :unique => true
+  key :authentication_token,  String,   :unique => true
+  key :password_reset_token,  String,   :unique => true
   # active used for indefinitely closing an account
   key :active,                Boolean,  :default => true
   # confirmed determines if the user has clicked the link sent to them after signing up
@@ -28,8 +29,13 @@ class User
                   :password,
                   :active
 
-  before_create :encrypt_password!,
-                :generate_token!
+  before_create do
+    encrypt_password!
+
+    # generate tokens now as they must be unique to be saved
+    generate_token!(:authentication_token)
+    generate_token!(:password_reset_token)
+  end
 
   # automatically activate/deactivate user's books
   def active=(value)
@@ -37,12 +43,16 @@ class User
     super
   end
 
-  def self.find_from_token(params)
-    User.find_by_username_and_token(params[:username], params[:token])
+  def self.find_from_authentication_token(params)
+    User.find_by_username_and_authentication_token(params[:username], params[:authentication_token])
   end
 
   def self.find_from_any_case_username(username)
     User.where(:username => { :$regex => /^#{username}$/i }).first
+  end
+
+  def self.find_from_any_case_email(email)
+    User.where(:email => { :$regex => /^#{email}$/i }).first
   end
 
   def encrypt_password!
@@ -50,10 +60,10 @@ class User
     self.password = Digest::SHA2.hexdigest(self.salt + self.password)
   end
 
-  def generate_token!
+  def generate_token!(column)
     begin
-      self.token = Digest::SHA1.hexdigest([Time.now, rand].join)
-    end while self.class.exists?(token: token)
+      self[column] = Digest::SHA1.hexdigest([Time.now, rand].join)
+    end while User.exists?(column => self[column])
   end
 
   def update_unread_conversations(action, conversation_id)

@@ -13,7 +13,7 @@ angular.module('bookSwitchApp').controller('BookUpdateController', function(
     $scope.book.$update({
       id: $scope.book.id,
       username: SiteData.get('username'),
-      token: SiteData.get('token')
+      authentication_token: SiteData.get('authentication_token')
     }, function() {
       $state.go('book.show', {
         id: $stateParams.id,

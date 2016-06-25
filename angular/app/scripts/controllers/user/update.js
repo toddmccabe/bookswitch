@@ -5,12 +5,12 @@ angular.module('bookSwitchApp').controller('UserUpdateController', function(
   SiteData
 ) {
   var username = SiteData.get('username');
-  var token = SiteData.get('token');
+  var authentication_token = SiteData.get('authentication_token');
   var user = new User();
 
   user.$get({
     username: username,
-    token: token
+    authentication_token: authentication_token
   }, function(user) {
     $scope.user = user;
   });
@@ -18,7 +18,7 @@ angular.module('bookSwitchApp').controller('UserUpdateController', function(
   $scope.update = function() {
     user.$update({
       username: username,
-      token: token
+      authentication_token: authentication_token
     }, function(response) {
       SiteData.set('username', response.username);
 

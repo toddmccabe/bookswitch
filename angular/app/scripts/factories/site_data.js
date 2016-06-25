@@ -5,7 +5,7 @@ angular.module('bookSwitchApp').factory('SiteData', function(
   var data = {};
   // SiteData attributes to automatically be read from/written to cookies
   // Note: saveToCookie is required for subsequent attributes and should be set first
-  var cookieAttributes = ['saveToCookie', 'username', 'token', 'lastIsbnEntered'];
+  var cookieAttributes = ['saveToCookie', 'username', 'authentication_token', 'lastIsbnEntered'];
   var cookiesOptions = {
     expires: new Date((new Date()).getTime() + appConfig.cookieExpirationInDays * 24 * 60 * 60 * 1000)
   };

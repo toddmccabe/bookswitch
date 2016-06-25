@@ -15,7 +15,7 @@ angular.module('bookSwitchApp').directive('conversationList', function(
       var query = function() {
         Conversation.query({
           username: $scope.username,
-          token: SiteData.get('token'),
+          authentication_token: SiteData.get('authentication_token'),
           page: $scope.page
         }, function(response) {
           $scope.conversations = response.conversations;

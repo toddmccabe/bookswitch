@@ -24,7 +24,7 @@ angular.module('bookSwitchApp').controller('BookNewController', function(
 
     $scope.book.$save({
       username: SiteData.get('username'),
-      token: SiteData.get('token')
+      authentication_token: SiteData.get('authentication_token')
     }, function(response) {
       $state.go('book.show', {
         id: response.id,

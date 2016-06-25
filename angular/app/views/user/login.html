@@ -2,6 +2,10 @@
   Your account is now active.
 </div>
 
+<div class="alert alert-success" ng-show="passwordUpdated && !loginFailed">
+  Your password has been updated.
+</div>
+
 <div class="alert alert-warning" ng-show="afterURL && !errors">
   You must log in or
   <a ui-sref="user.new">sign up</a>
@@ -46,6 +50,10 @@
       <button type="submit" class="btn btn-primary" ng-click="login()">
         Log in
       </button>
+
+      <a ui-sref="user.password_reset_request" class="btn btn-success pull-left">
+        I forgot
+      </a>
     </div>
   </div>
 </form>

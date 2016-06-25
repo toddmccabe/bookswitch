@@ -6,7 +6,7 @@ angular.module('bookSwitchApp').factory('SessionUtilities', function(
   // has the session been validated?
   var sessionValidated = false;
 
-  // validate session if username and token are present
+  // validate session if username and authentication token are present
   var startSessionValidation = function() {
     $rootScope.$watch(function() {
       return SiteData.get('username');
@@ -15,7 +15,7 @@ angular.module('bookSwitchApp').factory('SessionUtilities', function(
       // if username is present, attempt to authenticate
       if(value) {
         Session.get({
-          id: SiteData.get('token'),
+          id: SiteData.get('authentication_token'),
           username: value
         }, function() {
           // valid session

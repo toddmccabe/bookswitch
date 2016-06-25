@@ -14,7 +14,7 @@ angular.module('bookSwitchApp').controller('ConversationUpdateController', funct
   $scope.userInactive = false;
   $scope.bookUnavailable = false;
   $scope.username = SiteData.get('username');
-  $scope.token = SiteData.get('token');
+  $scope.authentication_token = SiteData.get('authentication_token');
 
   // retrieve associations and set up properties
   var conversationGetSuccess = function(response) {
@@ -54,7 +54,7 @@ angular.module('bookSwitchApp').controller('ConversationUpdateController', funct
     $scope.conversation.$update({
       id: $scope.conversation.id,
       username: $scope.username,
-      token: $scope.token
+      authentication_token: $scope.authentication_token
     }, function(response) {
       $state.go('conversation.update', {
         id: response.id,
@@ -91,6 +91,6 @@ angular.module('bookSwitchApp').controller('ConversationUpdateController', funct
   $scope.conversation.$get({
     id: $stateParams.id,
     username: $scope.username,
-    token: $scope.token
+    authentication_token: $scope.authentication_token
   }, conversationGetSuccess, conversationGetFailure);
 });

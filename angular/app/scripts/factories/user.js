@@ -12,6 +12,13 @@ angular.module('bookSwitchApp').factory('User', function(
     },
     'notifications': {
       url: '/api/user/notifications'
+    },
+    'passwordResetRequest': {
+      url: '/api/user/password_reset_request/:usernameEmail'
+    },
+    'passwordResetUpdate': {
+      method: 'POST',
+      url: '/api/user/password_reset_update'
     }
   });
 });

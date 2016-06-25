@@ -60,7 +60,7 @@ class BookController < ApplicationController
 
   def create
     book = Book.new(book_params)
-    book.user = User.find_from_token(params)
+    book.user = User.find_from_authentication_token(params)
 
     if book.save
       render json: {id: book.id}
@@ -81,7 +81,7 @@ class BookController < ApplicationController
 
   def update
     book = Book.find(params[:id])
-    user = User.find_from_token(params)
+    user = User.find_from_authentication_token(params)
 
     if !user || user != book.user
       head 401
@@ -99,7 +99,7 @@ class BookController < ApplicationController
 
   def destroy
     book = Book.find(params[:id])
-    user = User.find_from_token(params)
+    user = User.find_from_authentication_token(params)
 
     if !user || user != book.user
       head 401
