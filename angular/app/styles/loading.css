@@ -1,0 +1,41 @@
+html {
+  height: 100%;
+}
+
+html:before {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 100%;
+  animation-name: loading-fade;
+  animation-duration: 6s;
+  animation-timing-function: ease-in;
+  animation-iteration-count: infinite;
+  background: #eff6e0 url(/images/loading.png) center center no-repeat;
+}
+
+body {
+  display: none;
+}
+
+html.loaded:before {
+  display: none;
+}
+
+html.loaded body {
+  display: block;
+}
+
+@keyframes loading-fade {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

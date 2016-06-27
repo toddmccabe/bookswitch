@@ -4,7 +4,8 @@ angular.module('bookSwitchApp').controller('ApplicationController', function(
   SiteData,
   BrowserSupport,
   SessionUtilities,
-  UserNotifications
+  UserNotifications,
+  ApplicationState
 ) {
   // use timeout to allow all listeners to load
   $timeout(function() {
@@ -19,5 +20,8 @@ angular.module('bookSwitchApp').controller('ApplicationController', function(
 
     // start watcher for user notifications polling (new messages etc.)
     UserNotifications.initialize();
+
+    // start watcher for adding css classes depending on application state
+    ApplicationState.addListenerForCssClasses();
   });
 });

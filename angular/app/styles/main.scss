@@ -23,7 +23,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "brands";
 
 body {
-  background-color: #eff6e0;
+  background-color: $brand-fill;
   padding-bottom: $grid-gutter-width;
   padding-bottom: 7px;
 }
