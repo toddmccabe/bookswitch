@@ -14,13 +14,13 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "animation";
 @import "pagination";
 @import "grid";
-
 @import "error";
 @import "search_by_image";
 @import "item_list";
 @import "message";
 @import "book";
 @import "brands";
+@import "infographic";
 
 body {
   background-color: $brand-fill;

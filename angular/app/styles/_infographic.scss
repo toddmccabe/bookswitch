@@ -1,0 +1,117 @@
+.infographic-3-step {
+  @extend .br-gutter;
+  @extend .clearfix;
+
+  padding: 0;
+
+  li {
+    position: relative;
+    float: left;
+    list-style: none;
+    text-align: center;
+    color: $brand-primary;
+    border: 1px solid $brand-primary;
+    border-radius: 7px;
+
+    img {
+      border-radius: 7px;
+    }
+
+    > div {
+      @extend .br-gutter;
+
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      line-height: 120%;
+    }
+
+    > span {
+      background: linear-gradient(143deg, darken($brand-primary, 10%), lighten($brand-primary, 10%));
+
+      position: absolute;
+      display: block;
+      color: #fff;
+      border: 1px solid $brand-primary;
+      background-color: $brand-primary;
+    }
+
+    @include breakpoint(xs) {
+      width: 92%;
+      font-size: 24px;
+      margin: 39px 1% 0 7%;
+
+      > span {
+        top: -20px;
+        left: -20px;
+        border-radius: 20px;
+        width: 38px;
+        padding-right: 2px;
+        height: 40px;
+        line-height: 39px;
+      }
+    }
+
+    @include breakpoint(ms) {
+      width: 27%;
+      font-size: 13px;
+      margin: 22px 1% 0 5%;
+
+      > div {
+        margin-bottom: 10px;
+      }
+
+      > span {
+        font-size: 18px;
+        top: -15px;
+        left: -15px;
+        border-radius: 15px;
+        padding-right: 1px;
+        width: 29px;
+        height: 30px;
+        line-height: 29px;
+      }
+    }
+
+    @include breakpoint(sm) {
+      font-size: 19px;
+      margin-top: 27px;
+
+      > div {
+        margin-bottom: 12px;
+      }
+
+      > span {
+        top: -18px;
+        left: -18px;
+        border-radius: 18px;
+        padding-right: 1px;
+        width: 35px;
+        height: 36px;
+        line-height: 35px;
+      }
+    }
+
+    @include breakpoint(md) {
+      font-size: 24px;
+      margin-top: 37px;
+
+      > span {
+        font-size: 22px;
+        top: -21px;
+        left: -21px;
+        border-radius: 21px;
+        padding-right: 1px;
+        width: 41px;
+        height: 42px;
+        line-height: 41px;
+      }
+    }
+
+    @include breakpoint(lg) {
+      font-size: 27px;
+      width: 28%;
+      margin: 39px 2% 0 3%;
+    }
+  }
+}
