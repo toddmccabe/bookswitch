@@ -1,3 +1,12 @@
+<div class="alert alert-warning" ng-show="!username">
+  You're welcome to try adding a book.
+  Please note that you must
+  <a ui-sref="user.login">log in</a>
+  or
+  <a ui-sref="user.new">sign up</a>
+  before saving it.
+</div>
+
 <form class="form-horizontal" autocomplete="off">
   <div class="form-group">
     <label for="isbn10" class="control-label col-sm-4">

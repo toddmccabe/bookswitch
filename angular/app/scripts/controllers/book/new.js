@@ -6,6 +6,7 @@ angular.module('bookSwitchApp').controller('BookNewController', function(
   SiteData
 ) {
   $scope.book = new Book();
+  $scope.username = SiteData.get('username');
 
   // load and remove previously entered ISBN. this is for the new
   // user that fills out form, registers and returns to the form
@@ -18,12 +19,12 @@ angular.module('bookSwitchApp').controller('BookNewController', function(
   $scope.create = function() {
     // if the user isn't logged in, save the ISBN they
     // entered for when they return after registering
-    if(!SiteData.get('username')) {
+    if(!$scope.username) {
       SiteData.set('lastIsbnEntered', $scope.book.isbn10);
     }
 
     $scope.book.$save({
-      username: SiteData.get('username'),
+      username: $scope.username,
       authentication_token: SiteData.get('authentication_token')
     }, function(response) {
       $state.go('book.show', {
