@@ -45,8 +45,8 @@ angular.module('bookSwitchApp').constant('appConfig', {
     },
     decoder: {
       readers: [
-        'ean_reader',
-        'upc_reader'
+        'upc_reader',
+        'ean_reader'
       ]
     },
     locate: true
