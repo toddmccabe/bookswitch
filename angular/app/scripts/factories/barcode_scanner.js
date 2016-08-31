@@ -44,6 +44,10 @@ angular.module('bookSwitchApp').factory('BarcodeScanner', function(
         if(error) {
           alert('Unable to access your camera. Please enter the ISBN manually.');
           console.log(error);
+
+          // hide helper overlay elements
+          _this.hideOverlays();
+
           return;
         }
 
@@ -89,16 +93,22 @@ angular.module('bookSwitchApp').factory('BarcodeScanner', function(
     stop: function() {
       Quagga.stop();
 
+      // hide helper overlay elements
+      this.hideOverlays();
+
+      this.isRunning = false;
+    },
+
+    // hide preview distance guide and background mask
+    hideOverlays: function() {
+      // remove canvas/video elements as Quagga does not do this by default
+      $(preview).empty();
+      
       // hide distance guide
       previewDistanceGuide.hide();
 
-      // remove canvas/video elements as Quagga does not do this by default
-      $(preview).empty();
-
       // hide background click mask
       mask.hide();
-
-      this.isRunning = false;
     },
 
     // search for a barcode from file upload select
